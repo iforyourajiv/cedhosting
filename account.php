@@ -1,27 +1,93 @@
+<?php
+
+include_once './class/user.class.php';
+$user = new User();
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_SESSION['email'])) {
+    header('Location:index.php');
+}
+
+if (isset($_POST['signup'])) {
+    $email            = trim(preg_replace('/\s+/', ' ', $_POST['email']));
+    $name             = trim(preg_replace('/\s+/', ' ', $_POST['fullname']));
+    $mobile           = $_POST['mobile'];
+    $question         = $_POST['question'];
+    $answer           = $_POST['answer'];
+    $password         = $_POST['password'];
+    $password_confirm = $_POST['confirm_password'];
+
+    if ($password_confirm == $password) {
+        $check = $user->signup($email, $name, $mobile, $question, $answer, $password);
+        if ($check) {
+            echo "<script>alert('Congratulations,Registration Successfully Completed')</script>";
+            echo "<script>window.location.href='login.php';</script>";
+        } else {
+            echo "<script>alert('Registration failed')</script>";
+            echo "<script>window.location.href='account.php';</script>";
+        }
+    } else {
+        echo "<script>alert('Confirm Password Is Not Matched with Password')</script>";
+        echo "<script>window.location.href='account.php';</script>";
+    }
+}
+
+?>
+
+
 <body>
+	<!--script-->
+	<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+	<link rel="stylesheet" href="css/swipebox.css">
+				<script src="js/jquery.swipebox.min.js"></script>
+			    <script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+<!--script-->
 	<!---header--->
-	<?php include './header.php'?>
+	<?php include './header.php' ?>
 	<!---header--->
-		<!---login--->
 			<div class="content">
 				<!-- registration -->
 	<div class="main-1">
 		<div class="container">
 			<div class="register">
-		  	  <form> 
+		  	  <form action="account.php" method="POST">
 				 <div class="register-top-grid">
 					<h3>personal information</h3>
 					 <div>
-						<span>First Name<label>*</label></span>
-						<input type="text"> 
+						<span>Email<label>*</label></span>
+						<input  type="text" name='email'
+						pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$"
+						title="Please Enter Valid Email Id" placeholder="Email" required>
 					 </div>
 					 <div>
-						<span>Last Name<label>*</label></span>
-						<input type="text"> 
+						<span>Full Name<label>*</label></span>
+						<input type="text" id="fullname" name="fullname" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' title="please Enter Name With Single Space" placeholder="Full Name" required>
 					 </div>
 					 <div>
-						 <span>Email Address<label>*</label></span>
-						 <input type="text"> 
+						 <span>Mobile Number<label>*</label></span>
+						 <input type="text" id="mobile"  name="mobile" title="Please Enter Valid Mobile Number"  placeholder="Mobile Number (10 Digits Only)" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" required>
+					 </div>
+					 <div>
+						 <span>Security Question<label>*</label></span>
+						<select name="question" required>
+						<option>Select Your Security Question</option>
+						<option value="What was your childhood nickname?">What was your childhood nickname?</option>
+						<option value="What is the name of your favourite childhood friend?">What is the name of your favourite childhood friend?</option>
+						<option value="What was your favourite place to visit as a child?">What was your favourite place to visit as a child?</option>
+						<option value="What was your dream job as a child?">What was your dream job as a child?</option>
+						<option value="What is your favourite teacher's nickname?">Your Favorite Movie</option>
+						</select>
+					 </div>
+					 <div>
+						 <span>Security Answer<label>*</label></span>
+						 <input type="text" name="answer"  placeholder="Your Answer" pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
 					 </div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
@@ -32,21 +98,19 @@
 						    <h3>login information</h3>
 							 <div>
 								<span>Password<label>*</label></span>
-								<input type="password">
+								<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" title="Password Must Be atleast 8 character or maximum 16 Character,No Spaces Allowed" required>
 							 </div>
 							 <div>
 								<span>Confirm Password<label>*</label></span>
-								<input type="password">
+								<input type="password" name='confirm_password' required>
 							 </div>
 					 </div>
+					 <div class="clearfix"> </div>
+					<div class="register-but">
+						<input type="submit" name="signup" value="submit">
+						<div class="clearfix"> </div>
+					</div>
 				</form>
-				<div class="clearfix"> </div>
-				<div class="register-but">
-				   <form>
-					   <input type="submit" value="submit">
-					   <div class="clearfix"> </div>
-				   </form>
-				</div>
 		   </div>
 		 </div>
 	</div>
@@ -55,7 +119,7 @@
 			</div>
 <!-- login -->
 				<!---footer--->
-				<?php include './footer.php'?>
+				<?php include './footer.php' ?>
 			<!---footer--->
 </body>
 </html>

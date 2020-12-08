@@ -1,7 +1,18 @@
 
 <body>
+		<!--script-->
+		<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="css/swipebox.css">
+				<script src="js/jquery.swipebox.min.js"></script>
+			    <script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+<!--script-->
 	<!---header--->
-	<?php include './header.php'?>
+	<?php include './header.php' ?>
 	<!---header--->
 		<!---singleblog--->
 				<div class="content">
@@ -24,7 +35,7 @@
 									<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent vestibulum molestie lacus. Aenean nonummy hendrerit mauris. Phasellus porta. Fusce suscipit varius mi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla dui. Fusce feugiat malesuada odio. Morbi nunc odio, gravida at,cursus nec, luctus a, lorem. Maecenas tristique orci ac sem. Duis ultricies pharetra magna. Donec accumsan malesuada orci. Donec sit amet eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. </p>
 									<ul class="blog-ic">
 										<li><a href="#"><span><i  class="glyphicon glyphicon-user"> </i>Author</span> </a> </li>
-										<li><span><i class="glyphicon glyphicon-calendar"> </i>June 14, 2013</span></li>		  						 	
+										<li><span><i class="glyphicon glyphicon-calendar"> </i>June 14, 2013</span></li>
 										<li><span><i class="glyphicon glyphicon-eye-open"> </i>Hits:145</span></li>
 										<li><a href="#"><span><i class="glyphicon glyphicon-bookmark"> </i> Aliquam Congue5</span></a></li>
 									</ul>
@@ -85,7 +96,7 @@
 									<ul>
 										<li>August 15, 2016</li>
 										<li><a href="single.html">Reply</a></li>
-									</ul>	
+									</ul>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -99,7 +110,7 @@
 									<ul>
 										<li>August 15, 2016</li>
 										<li><a href="single.html">Reply</a></li>
-									</ul>	
+									</ul>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -113,7 +124,7 @@
 									<ul>
 										<li>August 15, 2016</li>
 										<li><a href="single.html">Reply</a></li>
-									</ul>	
+									</ul>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -135,9 +146,9 @@
 				</div>
 				</div>
 			<!---footer--->
-			<?php include './footer.php'?>
+			<?php include './footer.php' ?>
 			<!---footer--->
-			
-			
+
+
 </body>
 </html>

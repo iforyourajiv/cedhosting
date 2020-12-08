@@ -1,3 +1,24 @@
+<?php
+$filename = basename($_SERVER['REQUEST_URI']);
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (isset($_SESSION['email']) && $_SESSION['usertype'] == "admin") {
+    header("location:admin/index.php");
+}
+
+if (!isset($_SESSION['email'])) {
+    $html = "<li><a href='login.php'>Login</a></li>";
+} else {
+    $html = "<li><a href='logout.php'>Logout</a></li>";
+}
+?>
+
+
+
+
+
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -14,39 +35,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta name="keywords" content="Planet Hosting Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
 <!---fonts-->
 <link href='//fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <!---fonts-->
-<!--script-->
-<script src="js/modernizr.custom.97074.js"></script>
-<script src="js/jquery.chocolat.js"></script>
-<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen">
-<!--lightboxfiles-->
-<script type="text/javascript">
-	$(function() {
-	$('.team a').Chocolat();
-	});
-</script>
-<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
-						<script type="text/javascript">
-							$(function() {
 
-								$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
-
-							});
-						</script>
-<!--script-->
 </head>
 <!---header--->
-<?php
-$filename = basename($_SERVER['REQUEST_URI']);
-?>
-
 
 
 <div class="header">
@@ -85,7 +82,7 @@ $filename = basename($_SERVER['REQUEST_URI']);
 								<li <?php if ($filename == 'blog.php'): ?> class="active" <?php endif; ?>><a href="blog.php">Blog</a></li>
 								<li <?php if ($filename == 'contact.php'): ?> class="active" <?php endif; ?>><a href="contact.php">Contact</a></li>
 								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-								<li <?php if ($filename == 'login.php'): ?> class="active" <?php endif; ?>><a href="login.php">Login</a></li>
+								<?php echo $html ?>
 
 
 							</ul>

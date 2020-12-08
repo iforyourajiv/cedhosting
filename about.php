@@ -1,6 +1,28 @@
 <body>
+		<!-- script -->
+		<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<!--lightboxfiles-->
+	<script src="js/modernizr.custom.97074.js"></script>
+<script src="js/jquery.chocolat.js"></script>
+<link rel="stylesheet" href="css/chocolat.css" type="text/css" media="screen">
+<!--lightboxfiles-->
+<script type="text/javascript">
+	$(function() {
+	$('.team a').Chocolat();
+	});
+</script>
+<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
+						<script type="text/javascript">
+							$(function() {
+
+								$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
+
+							});
+						</script>
+<!--script-->
 	<!---header--->
-	<?php include './header.php'?>
+	<?php include './header.php' ?>
 	<!---header--->
 		<!--about--->
 				<div class="content">
@@ -132,7 +154,7 @@
 									<div class="clearfix"></div>
 								</div>
 							</div>
-						</div>	
+						</div>
 					<!--solution--->
 					<!--statistics--->
 						<div class="statistics">
@@ -173,11 +195,11 @@
 						</div>
 					<!--statistics--->
 				</div>
-			
+
 			<!---footer--->
-			<?php include './footer.php'?>
+			<?php include './footer.php' ?>
 			<!---footer--->
-			
-			
+
+
 </body>
 </html>

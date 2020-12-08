@@ -1641,7 +1641,7 @@ a.button4:hover {
 .register-but{
 	margin-top:1em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background: #e7663f;
 	color: #FFF;
 	font-size: 1.2em;
@@ -2846,7 +2846,7 @@ ul.blog-ic li span {
 .login-right input[type="submit"]{
     font-size: .965em;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
     font-size: 1em;
 }
 .zoom-icon {

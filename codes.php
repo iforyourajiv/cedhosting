@@ -1,7 +1,18 @@
 
 <body>
+		<!--script-->
+		<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="css/swipebox.css">
+				<script src="js/jquery.swipebox.min.js"></script>
+			    <script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+<!--script-->
 	<!---header--->
-	<?php include './header.php'?>
+	<?php include './header.php' ?>
 	<!---header--->
 	<!-- typography -->
 	<div class="content">
@@ -94,16 +105,16 @@
 						<a href="#"><span class="label label-warning">Warning</span></a>
 						<a href="#"><span class="label label-danger">Danger</span></a>
 					</h6>
-				</div>			   
+				</div>
 				<div class="grid_3 grid_5">
 					<h3 class="hdg">Progress Bars</h3>
 					<div class="tab-content">
 						<div class="tab-pane active" id="domprogress">
-							<div class="progress">    
+							<div class="progress">
 								<div class="progress-bar progress-bar-primary" style="width: 20%"></div>
 							</div>
 							<p>Info with <code>progress-bar-info</code> class.</p>
-							<div class="progress">    
+							<div class="progress">
 								<div class="progress-bar progress-bar-info" style="width: 60%"></div>
 							</div>
 							<p>Success with <code>progress-bar-success</code> class.</p>
@@ -268,21 +279,21 @@
 									<td><span class="badge badge-danger">777</span></td>
 								</tr>
 							</tbody>
-						</table>                    
+						</table>
 					</div>
 					<div class="col-md-6">
 						<p>Easily highlight new or unread items with the <code>.badge</code> class</p>
-						<div class="list-group list-group-alternate"> 
-							<a href="#" class="list-group-item"><span class="badge">201</span> <i class="ti ti-email"></i> Inbox </a> 
-							<a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i class="ti ti-eye"></i> Profile visits </a> 
-							<a href="#" class="list-group-item"><span class="badge">14</span> <i class="ti ti-headphone-alt"></i> Call </a> 
-							<a href="#" class="list-group-item"><span class="badge">20</span> <i class="ti ti-comments"></i> Messages </a> 
-							<a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i class="ti ti-bookmark"></i> Bookmarks </a> 
-							<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Notifications </a> 
+						<div class="list-group list-group-alternate">
+							<a href="#" class="list-group-item"><span class="badge">201</span> <i class="ti ti-email"></i> Inbox </a>
+							<a href="#" class="list-group-item"><span class="badge badge-primary">5021</span> <i class="ti ti-eye"></i> Profile visits </a>
+							<a href="#" class="list-group-item"><span class="badge">14</span> <i class="ti ti-headphone-alt"></i> Call </a>
+							<a href="#" class="list-group-item"><span class="badge">20</span> <i class="ti ti-comments"></i> Messages </a>
+							<a href="#" class="list-group-item"><span class="badge badge-warning">14</span> <i class="ti ti-bookmark"></i> Bookmarks </a>
+							<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Notifications </a>
 						</div>
 					</div>
 				   <div class="clearfix"> </div>
-				</div>	 
+				</div>
 				<div class="grid_3 grid_5">
 					<h3 class="hdg">Wells</h3>
 					<div class="well">
@@ -582,9 +593,9 @@
 	<!-- //typography -->
 	</div>
 			<!---footer--->
-			<?php include './footer.php'?>
+			<?php include './footer.php' ?>
 			<!---footer--->
-			
-			
+
+
 </body>
 </html>

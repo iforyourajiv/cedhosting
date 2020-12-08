@@ -1,7 +1,18 @@
 
 <body>
+		<!--script-->
+		<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.js"></script>
+		<link rel="stylesheet" href="css/swipebox.css">
+				<script src="js/jquery.swipebox.min.js"></script>
+			    <script type="text/javascript">
+					jQuery(function($) {
+						$(".swipebox").swipebox();
+					});
+				</script>
+<!--script-->
 	<!---header--->
-	<?php include './header.php'?>
+	<?php include './header.php' ?>
 	<!---header--->
 		<!---singleblog--->
 				<div class="content">
@@ -88,9 +99,9 @@
 					</div>
 				</div>
 			<!---footer--->
-			<?php include './footer.php'?>
+			<?php include './footer.php' ?>
 			<!---footer--->
-			
-			
+
+
 </body>
 </html>
