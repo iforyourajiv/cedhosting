@@ -94,7 +94,7 @@
 							<div class="clearfix"></div>
 						</div>
 						<div class="copy-section">
-							<p>&copy; 2016 Planet Hosting. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
+							<p>&copy; 2020 CedHosting. All rights reserved | Design by <a href="#">Cedhosting services</a></p>
 						</div>
 					</div>
 				</div>

@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Planet Hosting Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+<meta name="keywords" content="Planet Hosting Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -31,18 +31,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	$(function() {
 	$('.team a').Chocolat();
 	});
-</script>	
-<script type="text/javascript" src="js/jquery.hoverdir.js"></script>	
+</script>
+<script type="text/javascript" src="js/jquery.hoverdir.js"></script>
 						<script type="text/javascript">
 							$(function() {
-							
+
 								$(' #da-thumbs > li ').each( function() { $(this).hoverdir(); } );
 
 							});
-						</script>						
+						</script>
 <!--script-->
 </head>
 <!---header--->
+<?php
+$filename = basename($_SERVER['REQUEST_URI']);
+?>
+
+
+
 <div class="header">
 			<div class="container">
 				<nav class="navbar navbar-default">
@@ -54,36 +60,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<i class="icon-bar"></i>
 								<i class="icon-bar"></i>
 								<i class="icon-bar"></i>
-							</button>				  
+							</button>
 							<div class="navbar-brand">
-								<a href="index.php"><img class="img-responsive" src="./images/logo.png" alt="logo" height="20%" width="35%"></a>
+								<a href="index.php"><img class="img-responsive position-relative" src="./images/logo.png" alt="logo" height="20%" width="35%"></a>
 							</div>
 						</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="index.php">Home <i class="sr-only">(current)</i></a></li>
-								<li><a href="about.php">About</a></li>
-								<li><a href="pricing.php">Services</a></li>
-								<li class="dropdown">
+								<li <?php if ($filename == 'index.php'): ?> class="active" <?php endif; ?>><a href="index.php"> Home </a></li>
+								<li <?php if ($filename == 'about.php'): ?> class="active" <?php endif; ?>><a href="about.php" >About</a></li>
+								<li <?php if ($filename == 'services.php'): ?> class="active" <?php endif; ?>><a href="services.php">Services</a></li>
+								<li class="dropdown <?php if ($filename == 'linuxhosting.php' || $filename == 'wordpresshosting.php' || $filename == 'windowshosting.php' || $filename == 'cmshosting.php'): ?> active  <?php endif; ?>">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
 									<ul class="dropdown-menu">
 										<li><a href="linuxhosting.php">Linux hosting</a></li>
 										<li><a href="wordpresshosting.php">WordPress Hosting</a></li>
 										<li><a href="windowshosting.php">Windows Hosting</a></li>
 										<li><a href="cmshosting.php">CMS Hosting</a></li>
-									</ul>			
+									</ul>
 								</li>
-								<li><a href="pricing.php">Pricing</a></li>
-								<li><a href="blog.php">Blog</a></li>
-								<li><a href="contact.php">Contact</a></li>
+								<li <?php if ($filename == 'pricing.php'): ?> class="active" <?php endif; ?>><a href="pricing.php">Pricing</a></li>
+								<li <?php if ($filename == 'blog.php'): ?> class="active" <?php endif; ?>><a href="blog.php">Blog</a></li>
+								<li <?php if ($filename == 'contact.php'): ?> class="active" <?php endif; ?>><a href="contact.php">Contact</a></li>
 								<li><a href="cart.php"><i class="fa fa-shopping-cart"></i></a></li>
-								<li><a href="login.php">Login</a></li>
-								
-								
+								<li <?php if ($filename == 'login.php'): ?> class="active" <?php endif; ?>><a href="login.php">Login</a></li>
+
+
 							</ul>
-									  
+
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
