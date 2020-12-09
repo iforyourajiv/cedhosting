@@ -113,4 +113,13 @@ class User
         }
     }
 
+    public function updateEmail($email){
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET email_approved='1',active='1' WHERE email='$email'");
+    if($query){
+        return true;
+    } else {
+        return false;
+    }
+    }
+
 }

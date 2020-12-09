@@ -1,4 +1,8 @@
+<?php
+include_once '../class/product.class.php';
+$product=new Product();
 
+?>
 
 <body>
   <!-- Sidenav -->
@@ -25,8 +29,18 @@
       </div>
     </div> -->
     <!-- Page content -->
-    <div class="container-fluid mt-5">
-      
+    <div class="container-fluid mt-3">
+    <h2 class="text-primary">Add Category/Sub-Category</h2>
+    <div class="form-group">
+  <label class="text-warning">Select Category :</label>
+  <select class="form-control-md">
+    <option>1</option>
+    
+  </select>
+</div>
+        
+
+
       <!-- Footer -->
       <footer class="footer pt-0">
         <div class="row align-items-center justify-content-lg-between">

@@ -54,6 +54,7 @@ if (isset($_GET['data'])) {
 					<h3>Verification Status</h3>
 					 <div>
                         <span>Email<label>*</label>
+
                         <?php
 if ($checkMail) {
     echo "<i class='fa fa-check text-success' style='font-size:16px aria-hidden='true'></i>";
@@ -61,12 +62,15 @@ if ($checkMail) {
     echo "<i class='fa fa-times text-danger' style='font-size:16px;' aria-hidden='true'></i>";
 }
 ?></span>
-						<input  type="text" name='email' style="margin-bottom:10px"
+						<input  type="hidden" name='email' id="emailValue" style="margin-bottom:10px"
 						pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$"
-						title="Please Enter Valid Email Id" value="<?php echo $decryptedEmail ?>" placeholder="Email" disabled>
-                        <button class="btn btn-success" id="emailverify" name="emailverify">Verify Email</button>
+						title="Please Enter Valid Email Id"  placeholder="Email" disabled>
+                        <button class="btn btn-success" id="emailverify">Verify Email</button>
+                        <p id="status"></p>
+
                     </div>
 					 <div>
+
 						 <span>Mobile Number<label>*</label><?php
 
 if ($checkMobile) {
@@ -89,6 +93,46 @@ if ($checkMobile) {
 
 				<!---footer--->
 				<?php include './footer.php' ?>
-			<!---footer--->
+            <!---footer--->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+$("#emailverify").click(function(e){
+  e.preventDefault();
+  let email="<?php echo $decryptedEmail ?>";
+  let action="email";
+    $("#status").html("<p class='text-danger'>Sending...</p>")
+  $.ajax({
+            method: "POST",
+            url: "verify.php",
+            data: {
+                email:email,
+                action:action,
+            },
+        }).done(function(data) {
+         $("#emailverify").text("Re-Send Email");
+         $("#status").html("<p class='text-success'>Email Has Been Sent Successfully to : "+ email+" </p>")
+        });
+})
+
+// $("#verifyOTP").click(function() {
+//     let otp=$("#otp").val();
+//     let action="verify";
+//     let verificationSessionId=$("#VerificationSessionId").val();
+//         $.ajax({
+//             method: "POST",
+//             url: "verifyOTP.php",
+//             data: {
+//                 otp: otp,
+//                 action:action,
+//                 verificationSessionId:verificationSessionId
+//             },
+//         }).done(function(data) {
+//            $("#message").html(data);
+
+//         });
+// });
+});
+</script>
 </body>
 </html>
