@@ -22,8 +22,8 @@ if (isset($_POST['signup'])) {
     if ($password_confirm == $password) {
         $check = $user->signup($email, $name, $mobile, $question, $answer, $password);
         if ($check) {
-            echo "<script>alert('Congratulations,Registration Successfully Completed')</script>";
-            echo "<script>window.location.href='login.php';</script>";
+			$enc_mail=md5($email);
+            echo "<script>alert('Congratulations,Registration Successfully Completed');window.location.href='verificationPage.php?data=$enc_mail';</script>";
         } else {
             echo "<script>alert('Registration failed')</script>";
             echo "<script>window.location.href='account.php';</script>";
@@ -64,19 +64,19 @@ if (isset($_POST['signup'])) {
 						<span>Email<label>*</label></span>
 						<input  type="text" name='email'
 						pattern="^(?!.*\.{2})[a-zA-Z0-9.]+@[a-zA-Z]+(?:\.[a-zA-Z]+)*$"
-						title="Please Enter Valid Email Id" placeholder="Email" required>
+						title="Please Enter Valid Email Id" value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES) : ''; ?>" placeholder="Email" required>
 					 </div>
 					 <div>
 						<span>Full Name<label>*</label></span>
-						<input type="text" id="fullname" name="fullname" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' title="please Enter Name With Single Space" placeholder="Full Name" required>
+						<input type="text" id="fullname" name="fullname" value="<?php echo isset($_POST['name']) ? htmlspecialchars($_POST['name'], ENT_QUOTES) : ''; ?>" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' title="please Enter Name With Single Space" placeholder="Full Name" required>
 					 </div>
 					 <div>
 						 <span>Mobile Number<label>*</label></span>
-						 <input type="text" id="mobile"  name="mobile" title="Please Enter Valid Mobile Number"  placeholder="Mobile Number (10 Digits Only)" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" required>
+						 <input type="text" id="mobile"  name="mobile" value="<?php echo isset($_POST['mobile']) ? htmlspecialchars($_POST['mobile'], ENT_QUOTES) : ''; ?>" title="Please Enter Valid Mobile Number"  placeholder="Mobile Number (10 Digits Only)" pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$" required>
 					 </div>
 					 <div>
 						 <span>Security Question<label>*</label></span>
-						<select name="question" required>
+						<select name="question" class="select" required>
 						<option>Select Your Security Question</option>
 						<option value="What was your childhood nickname?">What was your childhood nickname?</option>
 						<option value="What is the name of your favourite childhood friend?">What is the name of your favourite childhood friend?</option>
@@ -85,9 +85,12 @@ if (isset($_POST['signup'])) {
 						<option value="What is your favourite teacher's nickname?">Your Favorite Movie</option>
 						</select>
 					 </div>
+					 <div></div>
 					 <div>
 						 <span>Security Answer<label>*</label></span>
-						 <input type="text" name="answer"  placeholder="Your Answer" pattern="[a-zA-Z]+[a-zA-Z0-9\s]*" required>
+						 <input type="text" name="answer" value="<?php echo isset($_POST['answer']) ? htmlspecialchars($_POST['answer'], ENT_QUOTES) : ''; ?>"  placeholder="Your Answer" pattern='^([A-Za-z0-9]+ )+[A-Za-z0-9]+$|^[A-Za-z0-9]+$' title="No whites paces,
+							-Can be alpha-numeric combination/ only alphabetic,
+							-Will be CASE-SENSITIVE" required>
 					 </div>
 					 <div class="clearfix"> </div>
 					   <a class="news-letter" href="#">
@@ -98,7 +101,9 @@ if (isset($_POST['signup'])) {
 						    <h3>login information</h3>
 							 <div>
 								<span>Password<label>*</label></span>
-								<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" title="Password Must Be atleast 8 character or maximum 16 Character,No Spaces Allowed" required>
+								<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$" title="No whites spaces,
+                                  -Range 8-16 character,
+                                 -Combination of UPPERCASE, lowercase, special character and numeric value." required>
 							 </div>
 							 <div>
 								<span>Confirm Password<label>*</label></span>

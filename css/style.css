@@ -1563,13 +1563,23 @@ a.button4:hover {
 	display: block;
 	text-transform: uppercase;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
+.register-top-grid input[type="text"],.register-bottom-grid input[type="password"] {
 	border: 1px solid #555;
 	outline-color:#FD9F3E;
 	width: 96%;
 	font-size: 1em;
 	padding: 0.5em;
 }
+
+.select{
+    background-color: white;
+    border: 1px solid #555;
+	outline-color:#FD9F3E;
+	width: 96%;
+	font-size: 1em;
+	padding: 0.5em;
+}
+
 .checkbox {
 	margin-bottom: 4px;
 	padding-left: 27px;
