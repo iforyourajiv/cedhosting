@@ -1,11 +1,14 @@
-
+<?php
+include_once '../class/product.class.php';
+$product = new Product();
+?>
 
 <body>
   <!-- Sidenav -->
- <?php include './header.php'?>
+ <?php include './header.php' ?>
     <!-- Header -->
     <!-- Header -->
-    <!-- <div class="header bg-primary">
+    <div class="header bg-primary">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
@@ -18,46 +21,51 @@
                 </ol>
               </nav>
             </div>
-          </div> -->
+          </div>
           <!-- Card stats -->
-          <!-- </div>
+        </div>
         </div>
       </div>
-    </div> -->
-    <!-- Page content -->
-    <div class="container-fluid mt-5">
-      
-        
+      <div class="container-fluid mt-3">
+    <h2 class="text-primary ml-3">Add Category/Sub-Category</h2>
+    <form class="col-md-4">
+    <div class="form-group">
+  <label class="text-warning">Select Category :</label>
+  <select name="cat_id" class="form-control-md">
+  <?php
+$data = $product->fetchcategory();
+foreach ($data as $element) {
+ $pro_id = $element['id'];
+ // $pro_parent_id=$element['prod_parent_id'];
+ $pro_name = $element['prod_name'];
+ ?>
 
+    <option value="<?php echo $pro_id ?>"><?php echo $pro_name ?></option>
+  <?php } ?>
+  </select>
+</div>
+
+<div class="form-group">
+<label class="text-dark font-weight-bold">Sub Category Name</label>
+                  <div class="input-group input-group-merge input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
+                    </div>
+                    <input class="form-control text-dark display-3" type="text" name="cat_name" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Enter Category Name" required>
+                  </div>
+                </div>
+                <div>
+                  <button type="button" class="btn btn-primary">Add Sub Category</button>
+                </div>
+                </form>
 
       <!-- Footer -->
-      <footer class="footer pt-0">
-        <div class="row align-items-center justify-content-lg-between">
-          <div class="col-lg-6">
-            <div class="copyright text-center  text-lg-left  text-muted">
-              &copy; 2020 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" class="nav-link" target="_blank">MIT License</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </footer>
+      <?php include_once './footer.php' ?>
     </div>
   </div>
+    </div>
+    <!-- Page content -->
+
   <!-- Argon Scripts -->
   <!-- Core -->
   <script src="assets/vendor/jquery/dist/jquery.min.js"></script>

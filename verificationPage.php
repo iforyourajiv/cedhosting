@@ -13,6 +13,7 @@ if (isset($_SESSION['email'])) {
 if (isset($_GET['data'])) {
     $email = $_GET['data'];
     $fetch = $user->selectMail();
+    $flag = 0;
     foreach ($fetch as $emails) {
         $encryptedEmail = md5($emails['email']);
         if ($email == $encryptedEmail) {
@@ -20,9 +21,11 @@ if (isset($_GET['data'])) {
             $mobile         = $emails['mobile'];
             $checkMail      = $user->checkEmail($decryptedEmail);
             $checkMobile    = $user->checkMobile($mobile);
-        } else {
-            echo "<script>alert('Email Not Exist');window.location.href='login.php';</script>";
+            $flag = 1;
         }
+    }
+    if($flag != 1) {
+            echo "<script>alert('Email Not Exist');window.location.href='login.php';</script>";
     }
 }
 

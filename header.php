@@ -1,4 +1,6 @@
 <?php
+include_once './class/product.class.php';
+$product = new Product();
 $filename = basename($_SERVER['REQUEST_URI']);
 if (!isset($_SESSION)) {
     session_start();
@@ -13,6 +15,7 @@ if (!isset($_SESSION['email'])) {
 } else {
     $html = "<li><a href='logout.php'>Logout</a></li>";
 }
+
 ?>
 
 
@@ -72,10 +75,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<li class="dropdown <?php if ($filename == 'linuxhosting.php' || $filename == 'wordpresshosting.php' || $filename == 'windowshosting.php' || $filename == 'cmshosting.php'): ?> active  <?php endif; ?>">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hosting<i class="caret"></i></a>
 									<ul class="dropdown-menu">
-										<li><a href="linuxhosting.php">Linux hosting</a></li>
-										<li><a href="wordpresshosting.php">WordPress Hosting</a></li>
-										<li><a href="windowshosting.php">Windows Hosting</a></li>
-										<li><a href="cmshosting.php">CMS Hosting</a></li>
+										<?php 
+											$data=$product->fetchNavBar();
+											if($data){
+											foreach($data as $element){
+												$SubmenuId=$element['id'];
+												$SubmenuName=$element['prod_name'];
+												$link=$element['link'];
+											
+										?>
+										<li><a href="<?php echo $link ?>"><?php echo $SubmenuName ?></a></li>
+										<?php }} ?>
 									</ul>
 								</li>
 								<li <?php if ($filename == 'pricing.php'): ?> class="active" <?php endif; ?>><a href="pricing.php">Pricing</a></li>
