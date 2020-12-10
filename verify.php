@@ -26,6 +26,38 @@ if(isset($_POST['action']))
     } else {
      echo "Email Sent successfully sent!";
     }
+  } else if($option=="mobile"){
+    $mobile                = $_POST['mobile'];
+    $APIKey                = '0074c169-33a5-11eb-83d4-0200cd936042';
+    $API_Response_json     = json_decode(file_get_contents("https://2factor.in/API/V1/$APIKey/SMS/$mobile/AUTOGEN"), false);
+    $VerificationSessionId = $API_Response_json->Details;
+    echo $VerificationSessionId;
+  } else if($option=="verify"){
+    $otpValue = $_POST['otp'];
+    $APIKey   = '0074c169-33a5-11eb-83d4-0200cd936042';
+    $result   = new User();
+   if ($otpValue != '') {
+        $VerificationSessionId = $_POST['verificationSessionId'];
+        $API_Response_json     = json_decode(file_get_contents("https://2factor.in/API/V1/$APIKey/SMS/VERIFY/$VerificationSessionId/$otpValue"), false);
+        $VerificationStatus    = $API_Response_json->Details;
+
+
+  if ($VerificationStatus == 'OTP Matched') {
+    $mobile=$_POST['mobile'];
+   $check = $result->mobileVarificationSave( $mobile);
+   if ($check) {
+    echo "Mobile Varification Completed. Now You Can Login'";
+    die();
+   } else {
+    echo "Error Happen On Server";
+    die();
+   }
+
+  } else {
+   echo "<scrip type='text/javascript'>alert('Sorry, OTP entered was incorrect. Please enter correct OTP'); </scrip>";
+   die();
+  }
+  }
   }
 }  
 

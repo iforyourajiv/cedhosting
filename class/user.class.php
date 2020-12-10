@@ -25,7 +25,7 @@ class User
             $enc_password = md5($password);
             $query        = mysqli_query($this->conn, "INSERT INTO tbl_user (email,name,mobile,active,is_admin,
                    password,security_question,security_answer)
-                   VALUES('$email','$name','$mobile','1','0','$enc_password','$question','$answer')");
+                   VALUES('$email','$name','$mobile','0','0','$enc_password','$question','$answer')");
             if ($query) {
                 return true;
             } else {
@@ -92,29 +92,34 @@ class User
             } else {
                 return false;
             }
-        } else {
-            echo "Error";
-        }
+        } 
     }
 
     public function checkMobile($mobile)
     {
         $query  = mysqli_query($this->conn, "SELECT * FROM tbl_user WHERE mobile='$mobile'");
         $result = $query->num_rows;
-        if ($result == 1) {
+        if ($result > 0) {
             $data = mysqli_fetch_assoc($query);
             if ($data['phone_approved'] == '1') {
                 return true;
             } else {
                 return false;
             }
-        } else {
-            echo "Error";
-        }
+        } 
     }
 
     public function updateEmail($email){
         $query=mysqli_query($this->conn,"UPDATE tbl_user SET email_approved='1',active='1' WHERE email='$email'");
+    if($query){
+        return true;
+    } else {
+        return false;
+    }
+    }
+
+    public function mobileVarificationSave($mobile){
+        $query=mysqli_query($this->conn,"UPDATE tbl_user SET phone_approved='1',active='1' WHERE mobile='$mobile'");
     if($query){
         return true;
     } else {

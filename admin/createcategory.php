@@ -106,7 +106,7 @@ foreach ($data as $element) {
                     <th scope="col" class="sort text-center">Sub Category ID</th>
                     <th scope="col" class="sort text-center">Name</th>
                     <th scope="col" class="sort text-center">Available/Unavailable</th>
-                    <th scope="col" class="sort text-center">Lunch Date</th>
+                    <th scope="col" class="sort text-center">Launch Date</th>
                     <th scope="col" class="sort text-center">Action</th>
                   </tr>
                 </thead>
