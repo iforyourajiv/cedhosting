@@ -1,16 +1,52 @@
 <?php
 include_once '../class/product.class.php';
 $product = new Product();
-
+$html    = "";
 if (isset($_POST['submit'])) {
-  $cat_id      = $_POST['cat_id'];
-  $subcategory = $_POST['subcategory'];
-  $link        = $_POST['link'];
-  $check       = $product->addSubCategory($cat_id, $subcategory, $link);
-  if ($check) {
-    echo "<script>alert('Subcategory Added SuccessFully')</script>";
+  $subcat_id    = $_POST['subcat_id'];
+  $productName  = $_POST['productName'];
+  $monthlyPrice = $_POST['monthlyPrice'];
+  $annualprice  = $_POST['annualprice'];
+  $sku          = $_POST['sku'];
+
+  // these variable Will encode in json
+  // *********************************
+  $webspace   = $_POST['webspace'];
+  $bandwith   = $_POST['bandwith'];
+  $freedomain = $_POST['freedomain'];
+  $language   = $_POST['language'];
+  $mailbox    = $_POST['mailbox'];
+  // *********************************
+
+  $features = array(
+    "webspace"   => $webspace, "bandwidth"  => $bandwith,
+    "freedomain" => $freedomain, "language" => $language, "mailbox" => $mailbox,
+  );
+  $encoded_features = json_encode($features);
+
+  $check = $product->insertProduct($subcat_id, $productName, $monthlyPrice, $annualprice, $sku, $encoded_features);
+
+  if ($check == 1) {
+    $html = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+  <strong>Product Added SuccessFully</strong>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span>&times;</span>
+  </button>
+</div>";
+  } elseif ($check == 2) {
+    $html = "<div class='alert alert-Warning alert-dismissible fade show' role='alert'>
+    <strong>Product Not Added!</strong> Product is Already Exist . Please Try Again.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span>&times;</span>
+    </button>
+  </div>";
   } else {
-    echo "<script>alert('Something Went Wrong !!! Subcategory Not Added SuccessFully')</script>";
+    $html = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+  <strong>Error Occured ,Product Not Added</strong>  Please Try Again.
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span>&times;</span>
+  </button>
+</div>";
   }
 }
 
@@ -40,6 +76,7 @@ if (isset($_POST['submit'])) {
     </div>
   </div>
   <div class="container-fluid mt--3">
+    <?php echo $html ?>
     <div class="row">
       <div class="col-sm-12">
         <div class="card bg-default mx-auto col-lg-12">
@@ -50,9 +87,9 @@ if (isset($_POST['submit'])) {
             <form action="addProduct.php" method="POST" class="col-md-6">
               <div class="form-group">
                 <label class="text-light">Select Sub Category :<span class="text-danger">*</span></label>
-                <select name="cat_id" class="form-control text-dark">
+                <select name="subcat_id" class="form-control text-dark">
                   <?php
-                  $data = $product->fetchSubcategory();
+                  $data = $product->fetchSubcategoryForProduct();
                   foreach ($data as $element) {
                     $pro_id = $element['id'];
                     // $pro_parent_id=$element['prod_parent_id'];

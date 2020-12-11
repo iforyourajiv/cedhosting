@@ -7,16 +7,23 @@ if (isset($_POST['submit'])) {
   $subcategory = $_POST['subcategory'];
   $link = $_POST['link'];
   $check = $product->addSubCategory($cat_id, $subcategory, $link);
-  if ($check) {
+  if ($check == 1) {
     $html = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Sub Category Added Successfully!</strong>
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span>&times;</span>
     </button>
   </div>";
+  } else if ($check == 2) {
+    $html = "<div class='alert alert-Warning alert-dismissible fade show' role='alert'>
+    <strong>Sub Category Not Added!</strong> Sub Category Already Exist . Please Try Again.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span>&times;</span>
+    </button>
+  </div>";
   } else {
     $html = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
-    <strong>Sub Category Not Added!</strong> Product is Already Exist Or Something Wrong on Server . Please Try Again.
+    <strong>Sub Category Not Added!</strong> Something Wrong on Server . Please Try Again.
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span>&times;</span>
     </button>
