@@ -1,11 +1,9 @@
-
-
 <body>
   <!-- Sidenav -->
- <?php include './header.php'?>
-    <!-- Header -->
-    <!-- Header -->
-    <!-- <div class="header bg-primary">
+  <?php include './header.php' ?>
+  <!-- Header -->
+  <!-- Header -->
+  <!-- <div class="header bg-primary">
       <div class="container-fluid">
         <div class="header-body">
           <div class="row align-items-center py-4">
@@ -19,17 +17,17 @@
               </nav>
             </div>
           </div> -->
-          <!-- Card stats -->
-          <!-- </div>
+  <!-- Card stats -->
+  <!-- </div>
         </div>
       </div>
     </div> -->
-    <!-- Page content -->
-    <div class="container-fluid mt-5">
-      
-      <!-- Footer -->
-      <?php include_once './footer.php' ?>
-    </div>
+  <!-- Page content -->
+  <div class="container-fluid mt-5">
+
+    <!-- Footer -->
+    <?php include_once './footer.php' ?>
+  </div>
   </div>
   <!-- Argon Scripts -->
   <!-- Core -->

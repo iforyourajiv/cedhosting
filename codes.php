@@ -1,16 +1,15 @@
-
 <body>
-		<!--script-->
-		<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
-		<link rel="stylesheet" href="css/swipebox.css">
-				<script src="js/jquery.swipebox.min.js"></script>
-			    <script type="text/javascript">
-					jQuery(function($) {
-						$(".swipebox").swipebox();
-					});
-				</script>
-<!--script-->
+	<!--script-->
+	<script src="js/jquery-1.11.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<link rel="stylesheet" href="css/swipebox.css">
+	<script src="js/jquery.swipebox.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$(".swipebox").swipebox();
+		});
+	</script>
+	<!--script-->
 	<!---header--->
 	<?php include './header.php' ?>
 	<!---header--->
@@ -28,27 +27,39 @@
 						<table class="table">
 							<tbody>
 								<tr>
-									<td><h1 id="h1.-bootstrap-heading">h1. Bootstrap heading<a class="anchorjs-link" href="#h1.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h1></td>
+									<td>
+										<h1 id="h1.-bootstrap-heading">h1. Bootstrap heading<a class="anchorjs-link" href="#h1.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h1>
+									</td>
 									<td class="type-info">Semibold 36px</td>
 								</tr>
 								<tr>
-									<td><h2 id="h2.-bootstrap-heading">h2. Bootstrap heading<a class="anchorjs-link" href="#h2.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h2></td>
+									<td>
+										<h2 id="h2.-bootstrap-heading">h2. Bootstrap heading<a class="anchorjs-link" href="#h2.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h2>
+									</td>
 									<td class="type-info">Semibold 30px</td>
 								</tr>
 								<tr>
-									<td><h3 id="h3.-bootstrap-heading">h3. Bootstrap heading<a class="anchorjs-link" href="#h3.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h3></td>
+									<td>
+										<h3 id="h3.-bootstrap-heading">h3. Bootstrap heading<a class="anchorjs-link" href="#h3.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h3>
+									</td>
 									<td class="type-info">Semibold 24px</td>
 								</tr>
 								<tr>
-									<td><h4 id="h4.-bootstrap-heading">h4. Bootstrap heading<a class="anchorjs-link" href="#h4.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h4></td>
+									<td>
+										<h4 id="h4.-bootstrap-heading">h4. Bootstrap heading<a class="anchorjs-link" href="#h4.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h4>
+									</td>
 									<td class="type-info">Semibold 18px</td>
 								</tr>
 								<tr>
-									<td><h5 id="h5.-bootstrap-heading">h5. Bootstrap heading<a class="anchorjs-link" href="#h5.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h5></td>
+									<td>
+										<h5 id="h5.-bootstrap-heading">h5. Bootstrap heading<a class="anchorjs-link" href="#h5.-bootstrap-heading"><span class="anchorjs-icon"></span></a></h5>
+									</td>
 									<td class="type-info">Semibold 14px</td>
 								</tr>
 								<tr>
-									<td><h6>h6. Bootstrap heading</h6></td>
+									<td>
+										<h6>h6. Bootstrap heading</h6>
+									</td>
 									<td class="type-info">Semibold 12px</td>
 								</tr>
 							</tbody>
@@ -292,7 +303,7 @@
 							<a href="#" class="list-group-item"><span class="badge badge-danger">30</span> <i class="ti ti-bell"></i> Notifications </a>
 						</div>
 					</div>
-				   <div class="clearfix"> </div>
+					<div class="clearfix"> </div>
 				</div>
 				<div class="grid_3 grid_5">
 					<h3 class="hdg">Wells</h3>
@@ -303,7 +314,7 @@
 						It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here
 					</div>
 					<div class="well">
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
+						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
 					</div>
 				</div>
 				<div class="grid_3 grid_5">
@@ -338,11 +349,11 @@
 				</div>
 				<h3 class="hdg">Unordered List</h3>
 				<ul class="list-group">
-				  <li class="list-group-item">Cras justo odio</li>
-				  <li class="list-group-item">Dapibus ac facilisis in</li>
-				  <li class="list-group-item">Morbi leo risus</li>
-				  <li class="list-group-item">Porta ac consectetur ac</li>
-				  <li class="list-group-item">Vestibulum at eros</li>
+					<li class="list-group-item">Cras justo odio</li>
+					<li class="list-group-item">Dapibus ac facilisis in</li>
+					<li class="list-group-item">Morbi leo risus</li>
+					<li class="list-group-item">Porta ac consectetur ac</li>
+					<li class="list-group-item">Vestibulum at eros</li>
 				</ul>
 				<h3 class="hdg">Ordered List</h3>
 				<ol>
@@ -363,7 +374,7 @@
 				</div>
 				<div class="input-group">
 					<span class="input-group-addon">$</span>
-						<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+					<input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
 					<span class="input-group-addon">.00</span>
 				</div>
 				<div class="input-group input-group-lg">
@@ -560,29 +571,29 @@
 					<table class="table table-hover">
 						<thead>
 							<tr>
-							  <th>#</th>
-							  <th>First Name</th>
-							  <th>Last Name</th>
-							  <th>Username</th>
+								<th>#</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Username</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-							  <td>1</td>
-							  <td>Mark</td>
-							  <td>Otto</td>
-							  <td>@mdo</td>
+								<td>1</td>
+								<td>Mark</td>
+								<td>Otto</td>
+								<td>@mdo</td>
 							</tr>
 							<tr>
-							  <td>2</td>
-							  <td>Jacob</td>
-							  <td>Thornton</td>
-							  <td>@fat</td>
+								<td>2</td>
+								<td>Jacob</td>
+								<td>Thornton</td>
+								<td>@fat</td>
 							</tr>
 							<tr>
-							  <td>3</td>
-							  <td colspan="2">Larry the Bird</td>
-							  <td>@twitter</td>
+								<td>3</td>
+								<td colspan="2">Larry the Bird</td>
+								<td>@twitter</td>
 							</tr>
 						</tbody>
 					</table>
@@ -590,12 +601,13 @@
 			</div>
 			<!-- //container-wrap -->
 		</div>
-	<!-- //typography -->
+		<!-- //typography -->
 	</div>
-			<!---footer--->
-			<?php include './footer.php' ?>
-			<!---footer--->
+	<!---footer--->
+	<?php include './footer.php' ?>
+	<!---footer--->
 
 
 </body>
+
 </html>

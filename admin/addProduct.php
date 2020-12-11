@@ -3,16 +3,15 @@ include_once '../class/product.class.php';
 $product = new Product();
 
 if (isset($_POST['submit'])) {
- $cat_id      = $_POST['cat_id'];
- $subcategory = $_POST['subcategory'];
- $link        = $_POST['link'];
- $check       = $product->addSubCategory($cat_id, $subcategory, $link);
- if ($check) {
-  echo "<script>alert('Subcategory Added SuccessFully')</script>";
- } else {
-  echo "<script>alert('Something Went Wrong !!! Subcategory Not Added SuccessFully')</script>";
- }
-
+  $cat_id      = $_POST['cat_id'];
+  $subcategory = $_POST['subcategory'];
+  $link        = $_POST['link'];
+  $check       = $product->addSubCategory($cat_id, $subcategory, $link);
+  if ($check) {
+    echo "<script>alert('Subcategory Added SuccessFully')</script>";
+  } else {
+    echo "<script>alert('Something Went Wrong !!! Subcategory Not Added SuccessFully')</script>";
+  }
 }
 
 ?>
@@ -53,14 +52,14 @@ if (isset($_POST['submit'])) {
                 <label class="text-light">Select Sub Category :<span class="text-danger">*</span></label>
                 <select name="cat_id" class="form-control text-dark">
                   <?php
-$data = $product->fetchSubcategory();
-foreach ($data as $element) {
- $pro_id = $element['id'];
- // $pro_parent_id=$element['prod_parent_id'];
- $pro_name = $element['prod_name'];
- ?>
+                  $data = $product->fetchSubcategory();
+                  foreach ($data as $element) {
+                    $pro_id = $element['id'];
+                    // $pro_parent_id=$element['prod_parent_id'];
+                    $pro_name = $element['prod_name'];
+                  ?>
 
-                  <option value="<?php echo $pro_id ?>"><?php echo $pro_name ?></option>
+                    <option value="<?php echo $pro_id ?>"><?php echo $pro_name ?></option>
                   <?php } ?>
                 </select>
               </div>
@@ -71,8 +70,7 @@ foreach ($data as $element) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-app text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="productName"
-                    pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Product Name" required>
+                  <input class="form-control text-dark" type="text" name="productName" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Product Name" required>
                 </div>
               </div>
               <div class="form-group">
@@ -95,8 +93,7 @@ foreach ($data as $element) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-money-coins text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="monthlyPrice" placeholder="Monthly Price"
-                    required>
+                  <input class="form-control text-dark" type="text" name="monthlyPrice" placeholder="Monthly Price" required>
 
                 </div>
                 <p class="text-white my-auto">This Would Be Monthly Plan</p>
@@ -108,8 +105,7 @@ foreach ($data as $element) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-money-coins text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="annualprice" placeholder="Annual Price"
-                    required>
+                  <input class="form-control text-dark" type="text" name="annualprice" placeholder="Annual Price" required>
 
                 </div>
                 <p class="text-white my-auto">This Would Be Annual Plan</p>
@@ -135,8 +131,7 @@ foreach ($data as $element) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-bag-17 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="webspace" placeholder="Web Space(in GB)"
-                      required>
+                    <input class="form-control text-dark" type="text" name="webspace" placeholder="Web Space(in GB)" required>
 
                   </div>
                   <p class="text-white my-auto">Enter 0.5 for 512 MB</p>
@@ -148,8 +143,7 @@ foreach ($data as $element) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-spaceship text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="bandwith" placeholder="Bandwidth (in GB)"
-                      required>
+                    <input class="form-control text-dark" type="text" name="bandwith" placeholder="Bandwidth (in GB)" required>
 
                   </div>
                   <p class="text-white my-auto">Enter 0.5 for 512 MB</p>
@@ -160,22 +154,19 @@ foreach ($data as $element) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-world-2 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="freedomain" placeholder="Free Domain"
-                      required>
+                    <input class="form-control text-dark" type="text" name="freedomain" placeholder="Free Domain" required>
 
                   </div>
                   <p class="text-white my-auto">Enter 0 if no domain available in this service</p>
                 </div>
 
                 <div class="form-group">
-                  <label class="text-light font-weight-bold">Language / Technology Support <span
-                      class="text-danger">*</span> </label>
+                  <label class="text-light font-weight-bold">Language / Technology Support <span class="text-danger">*</span> </label>
                   <div class="input-group input-group-alternative mb-2">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-caps-small text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="language"
-                      placeholder="Language / Technology Support " required>
+                    <input class="form-control text-dark" type="text" name="language" placeholder="Language / Technology Support " required>
 
                   </div>
                   <p class="text-white my-auto">Separate by (,) Ex: PHP, MySQL, MongoDB</p>

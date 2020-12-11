@@ -35,10 +35,39 @@ class Product
     }
 
     public function fetchSubcategory(){
-        $query=mysqli_query($this->conn,"SELECT *from tbl_product WHERE prod_parent_id!='0' AND prod_available='1'");
+        $query=mysqli_query($this->conn,"SELECT *from tbl_product WHERE prod_parent_id!='0'");
         $result=$query->num_rows;
         if($result>0){
             return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function fetchSubcategoryforEdit($id){
+        $query=mysqli_query($this->conn,"SELECT * FROM tbl_product WHERE id='$id'");
+        $result=$query->num_rows;
+        if($result>0){
+            return $query;
+        } else {
+            return  false;
+        }
+    }
+
+    public function updateSubCategory($id,$cat_id,$subcategory,$link,$avilability){
+        $query=mysqli_query($this->conn,"UPDATE tbl_product SET prod_parent_id='$cat_id',prod_name='$subcategory',
+                            link='$link',prod_available='$avilability' WHERE id='$id'");
+        if($query){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteSubCategory($id){
+        $query=mysqli_query($this->conn,"DELETE FROM tbl_product WHERE id='$id'");
+        if($query){
+            return true;
         } else {
             return false;
         }
@@ -52,7 +81,7 @@ class Product
     }
 
     public function fetchNavBar(){
-        $query=mysqli_query($this->conn,"SELECT * FROM tbl_product WHERE prod_parent_id='1'");
+        $query=mysqli_query($this->conn,"SELECT * FROM tbl_product WHERE prod_parent_id='1' AND prod_available='1'");
         $result=$query->num_rows;
         if($result>0){
             return $query;
@@ -63,4 +92,3 @@ class Product
 
  
 }
-?>

@@ -51,7 +51,6 @@ class User
             if ($active == '0') {
                 $enc_mail = md5($email);
                 echo "<script>alert('You are Not active,Please Verify Your Email Or Mobile');window.location.href='verificationPage.php?data=$enc_mail';</script>";
-
             } else {
                 $_SESSION['username'] = $name;
                 $_SESSION['email']    = $email;
@@ -63,11 +62,9 @@ class User
                     header('Location:index.php');
                 }
             }
-
         } else {
             echo "<script>alert('Wrong Email Or Password ')</script>";
         }
-
     }
 
     public function selectMail()
@@ -92,7 +89,7 @@ class User
             } else {
                 return false;
             }
-        } 
+        }
     }
 
     public function checkMobile($mobile)
@@ -106,25 +103,26 @@ class User
             } else {
                 return false;
             }
-        } 
+        }
     }
 
-    public function updateEmail($email){
-        $query=mysqli_query($this->conn,"UPDATE tbl_user SET email_approved='1',active='1' WHERE email='$email'");
-    if($query){
-        return true;
-    } else {
-        return false;
-    }
-    }
-
-    public function mobileVarificationSave($mobile){
-        $query=mysqli_query($this->conn,"UPDATE tbl_user SET phone_approved='1',active='1' WHERE mobile='$mobile'");
-    if($query){
-        return true;
-    } else {
-        return false;
-    }
+    public function updateEmail($email)
+    {
+        $query = mysqli_query($this->conn, "UPDATE tbl_user SET email_approved='1',active='1' WHERE email='$email'");
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    public function mobileVarificationSave($mobile)
+    {
+        $query = mysqli_query($this->conn, "UPDATE tbl_user SET phone_approved='1',active='1' WHERE mobile='$mobile'");
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
