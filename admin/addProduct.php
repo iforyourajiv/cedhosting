@@ -4,7 +4,7 @@ $product = new Product();
 $html    = "";
 if (isset($_POST['submit'])) {
   $subcat_id    = $_POST['subcat_id'];
-  $productName  = $_POST['productName'];
+  $productName  =trim(preg_replace('/\s+/',' ',   $_POST['productName']));
   $monthlyPrice = $_POST['monthlyPrice'];
   $annualprice  = $_POST['annualprice'];
   $sku          = $_POST['sku'];

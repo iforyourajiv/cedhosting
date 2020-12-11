@@ -76,12 +76,18 @@ class Product
 
     public function updateSubCategory($id, $cat_id, $subcategory, $link, $avilability)
     {
-        $query = mysqli_query($this->conn, "UPDATE tbl_product SET prod_parent_id='$cat_id',prod_name='$subcategory',
-                            link='$link',prod_available='$avilability' WHERE id='$id'");
-        if ($query) {
-            return true;
+        $sql = mysqli_query($this->conn, "SELECT * FROM tbl_product where prod_name='$subcategory' and id!='$id'");
+        $result = $sql->num_rows;
+        if ($result > 0) {
+            return 2; //For Existing Project
         } else {
-            return false;
+            $query = mysqli_query($this->conn, "UPDATE tbl_product SET prod_parent_id='$cat_id',prod_name='$subcategory',
+            link='$link',prod_available='$avilability' WHERE id='$id'");
+            if ($query) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 

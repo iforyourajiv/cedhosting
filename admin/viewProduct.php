@@ -26,38 +26,33 @@ $product = new Product();
       </div>
     </div>
   </div>
-  <div class="container-fluid mt-3">
-    <h2 class="text-primary ml-3">Add Category/Sub-Category</h2>
-    <form class="col-md-4">
-      <div class="form-group">
-        <label class="text-warning">Select Category :</label>
-        <select name="cat_id" class="form-control-md">
-          <?php
-          $data = $product->fetchcategory();
-          foreach ($data as $element) {
-            $pro_id = $element['id'];
-            // $pro_parent_id=$element['prod_parent_id'];
-            $pro_name = $element['prod_name'];
-          ?>
-
-            <option value="<?php echo $pro_id ?>"><?php echo $pro_name ?></option>
-          <?php } ?>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="text-dark font-weight-bold">Sub Category Name</label>
-        <div class="input-group input-group-merge input-group-alternative">
-          <div class="input-group-prepend">
-            <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
+  <div class="container mt--3">
+    <div class="row">
+      <div class="col">
+        <div class="card bg-default text-warning shadow">
+          <div class="card-header bg-transparent border-0">
+            <h2 class="text-white text-center mb-0">ALL PRODUCTS</h2>
           </div>
-          <input class="form-control text-dark display-3" type="text" name="cat_name" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Enter Category Name" required>
+          <div class="table-responsive text-warning">
+            <table id="subcategoryTable" class="table align-items-center table-dark table-flush">
+              <thead class="thead-white">
+                <tr>
+                  <th scope="col" class="sort text-center">Category</th>
+                  <th scope="col" class="sort text-center">Sub Category ID</th>
+                </tr>
+              </thead>
+              <tbody class="list text-dark">
+      
+                    <td class="text-center">frkehf;</td>
+                    <td class="text-center">dklejdrf;lef</td>
+                  </tr>
+      
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div>
-        <button type="button" class="btn btn-primary">Add Sub Category</button>
-      </div>
-    </form>
+    </div>
 
     <!-- Footer -->
     <?php include_once './footer.php' ?>
@@ -78,6 +73,16 @@ $product = new Product();
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+  <script>
+    $(function() {
+      $('#subcategoryTable').DataTable({
+        "sPaginationType": "full_numbers"
+      });
+    })
+  </script>
 </body>
 
 </html>
