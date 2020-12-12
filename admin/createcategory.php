@@ -4,7 +4,7 @@ $product = new Product();
 $html = "";
 if (isset($_POST['submit'])) {
   $cat_id = $_POST['cat_id'];
-  $subcategory = trim(preg_replace('/\s+/',' ',  $_POST['subcategory']));
+  $subcategory = trim(preg_replace('/\s+/', ' ',  $_POST['subcategory']));
   $link = $_POST['link'];
   $check = $product->addSubCategory($cat_id, $subcategory, $link);
   if ($check == 1) {
@@ -61,14 +61,14 @@ if (isset($_GET['status'])) {
       <span>&times;</span>
     </button>
   </div>";
-  } else if($status==2){
+  } else if ($status == 2) {
     $html = "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
     <strong>Sub Category Already Exist</strong>
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
       <span>&times;</span>
     </button>
   </div>";
-  }else {
+  } else {
     $html = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
     <strong>Sub Category Updation Failed!</strong> Please Try Again.
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>

@@ -1,7 +1,39 @@
 <?php
 include_once '../class/product.class.php';
 $product = new Product();
+$data = $product->fetchProduct();
+$html="";
+if(isset($_GET['del'])){
+  $id=$_GET['del'];
+  $check=$product->deleteProduct($id);
+  if($check){
+    echo "<script>window.location.href='viewProduct.php?status=1'</script>";
+   
+  } else {
+    echo "<script>window.location.href='viewProduct.php?status=0'</script>";
+  }
+}
+
+if(isset($_GET['status'])){
+  $status=$_GET['status'];
+  if($status==1){
+    $html = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+    <strong>Product Deleted Successfully!</strong>
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span>&times;</span>
+    </button>
+  </div>";
+  } else {
+    $html = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+    <strong>Production Deletion Failed</strong> Something Wrong on Server . Please Try Again.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span>&times;</span>
+    </button>
+  </div>";
+  }
+}
 ?>
+
 
 <body>
   <!-- Sidenav -->
@@ -27,6 +59,7 @@ $product = new Product();
     </div>
   </div>
   <div class="container mt--3">
+    <?php echo $html ?>
     <div class="row">
       <div class="col">
         <div class="card bg-default text-warning shadow">
@@ -38,15 +71,67 @@ $product = new Product();
               <thead class="thead-white">
                 <tr>
                   <th scope="col" class="sort text-center">Category</th>
-                  <th scope="col" class="sort text-center">Sub Category ID</th>
+                  <th scope="col" class="sort text-center">Product Name</th>
+                  <th scope="col" class="sort text-center">Page URL</th>
+                  <th scope="col" class="sort text-center">Monthly Price</th>
+                  <th scope="col" class="sort text-center">Annual Price</th>
+                  <th scope="col" class="sort text-center">SKU</th>
+                  <th scope="col" class="sort text-center">Web Space</th>
+                  <th scope="col" class="sort text-center">Bandwidth</th>
+                  <th scope="col" class="sort text-center">Free Domain</th>
+                  <th scope="col" class="sort text-center">Language/ Technology</th>
+                  <th scope="col" class="sort text-center">MailBox</th>
+                  <th scope="col" class="sort text-center">Launch Date</th>
+                  <th scope="col" class="sort text-center">Available/Unavailable</th>
+                  <th scope="col" class="sort text-center">Action</th>
+
                 </tr>
               </thead>
               <tbody class="list text-dark">
-      
-                    <td class="text-center">frkehf;</td>
-                    <td class="text-center">dklejdrf;lef</td>
-                  </tr>
-      
+                <?php
+                if ($data) {
+                  foreach ($data as $element) {
+                    $productId = $element['id'];
+                    $category = $element['prod_parent_id'];
+                    $productName = $element['prod_name'];
+                    $link = $element['link'];
+                    $monthlyPrice = $element['mon_price'];
+                    $annualPrice = $element['annual_price'];
+                    $sku = $element['sku'];
+                    $description = json_decode($element['description']);
+                    $webspace = $description->webspace;
+                    $bandwidth = $description->bandwidth;
+                    $freeDomain = $description->freedomain;
+                    $language = $description->language;
+                    $mailbox = $description->mailbox;
+                    $launchDate = $element['prod_launch_date'];
+                    $availablity = $element['prod_available'];
+                    if ($availablity == 1) {
+                      $availablity = "Available";
+                    } else {
+                      $availablity = "Not Available";
+                    }
+                ?>
+                    <tr>
+                      <td class="text-center"><?php echo $category ?></td>
+                      <td class="text-center"><?php echo $productName ?></td>
+                      <td class="text-center"><?php echo $link ?></td>
+                      <td class="text-center">&#x20B9;<?php echo $monthlyPrice ?></td>
+                      <td class="text-center">&#x20B9;<?php echo $annualPrice ?></td>
+                      <td class="text-center"><?php echo $sku ?></td>
+                      <td class="text-center"><?php echo $webspace ?> GB</td>
+                      <td class="text-center"><?php echo $bandwidth ?>GB</td>
+                      <td class="text-center"><?php echo $freeDomain ?></td>
+                      <td class="text-center"><?php echo $language ?></td>
+                      <td class="text-center"><?php echo $mailbox ?></td>
+                      <td class="text-center"><?php echo $launchDate ?></td>
+                      <td class="text-center"><?php echo  $availablity ?></td>
+                      <td class="text-center"><a href="editProduct.php?edit=<?php echo $productId ?>" class="btn btn-Warning">Edit</a>
+                      <a onClick="javascript: return confirm('Please confirm deletion');" href="viewProduct.php?del=<?php echo $productId ?>" class="btn btn-Danger">Delete</a></td></td>
+                    </tr>
+
+                <?php  }
+                } ?>
               </tbody>
             </table>
           </div>

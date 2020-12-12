@@ -4,7 +4,7 @@ $product = new Product();
 $html    = "";
 if (isset($_POST['submit'])) {
   $subcat_id    = $_POST['subcat_id'];
-  $productName  =trim(preg_replace('/\s+/',' ',   $_POST['productName']));
+  $productName  = trim(preg_replace('/\s+/', ' ',   $_POST['productName']));
   $monthlyPrice = $_POST['monthlyPrice'];
   $annualprice  = $_POST['annualprice'];
   $sku          = $_POST['sku'];
@@ -107,8 +107,10 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-app text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="productName" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Product Name" required>
+                  <input class="form-control text-dark" type="text" id="productName"  onblur="checkempty(this.id)" name="productName" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Product Name" required>
+
                 </div>
+                <small class="text-danger" id="productName1"></small>
               </div>
               <div class="form-group">
                 <label class="text-light font-weight-bold">Page URL</label>
@@ -116,7 +118,7 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-active-40 text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="url" placeholder="Enter Link">
+                  <input class="form-control text-dark" type="url" id="url" name="url" placeholder="Enter Link">
                 </div>
               </div>
               <hr class="bg-white">
@@ -130,9 +132,10 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-money-coins text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="monthlyPrice" placeholder="Monthly Price" required>
+                  <input class="form-control text-dark" type="text" id="monthlyPrice" pattern='([0-9]+(\.[0-9]+)?)' onblur="checkempty(this.id)" name="monthlyPrice" placeholder="Monthly Price" required>
 
                 </div>
+                <small class="text-danger" id="monthlyPrice1"></small>
                 <p class="text-white my-auto">This Would Be Monthly Plan</p>
               </div>
               <div class="form-group">
@@ -142,9 +145,10 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-money-coins text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="annualprice" placeholder="Annual Price" required>
+                  <input class="form-control text-dark" type="text" id="annualprice" pattern='([0-9]+(\.[0-9]+)?)' onblur="checkempty(this.id)" name="annualprice" placeholder="Annual Price" required>
 
                 </div>
+                <small class="text-danger" id="annualprice1"></small>
                 <p class="text-white my-auto">This Would Be Annual Plan</p>
               </div>
               <div class="form-group">
@@ -153,9 +157,10 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-cloud-upload-96 text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="sku" placeholder="SKU" required>
+                  <input class="form-control text-dark" type="text" id="sku" pattern="^[a-zA-Z0-9#](?:[a-zA-Z0-9_-]*[a-zA-Z0-9])?$" onblur="checkempty(this.id)" name="sku" placeholder="SKU" required>
 
                 </div>
+                <small class="text-danger" id="sku1"></small>
               </div>
               <hr class="bg-white">
               <h2 class="text-light pt-4">Features</h2>
@@ -168,9 +173,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-bag-17 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="webspace" placeholder="Web Space(in GB)" required>
+                    <input class="form-control text-dark" type="text" pattern='([0-9]+(\.[0-9]+)?)' id="webspace" onblur="checkempty(this.id)" name="webspace" placeholder="Web Space(in GB)" required>
 
                   </div>
+                  <small class="text-danger" id="webspace1"></small>
                   <p class="text-white my-auto">Enter 0.5 for 512 MB</p>
                 </div>
                 <div class="form-group">
@@ -180,9 +186,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-spaceship text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="bandwith" placeholder="Bandwidth (in GB)" required>
+                    <input class="form-control text-dark" type="text" pattern='([0-9]+(\.[0-9]+)?)' id="bandwith" onblur="checkempty(this.id)" name="bandwith" placeholder="Bandwidth (in GB)" required>
 
                   </div>
+                  <small class="text-danger" id="bandwith1"></small>
                   <p class="text-white my-auto">Enter 0.5 for 512 MB</p>
                 </div>
                 <div class="form-group">
@@ -191,9 +198,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-world-2 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="freedomain" placeholder="Free Domain" required>
+                    <input class="form-control text-dark" type="text" id="freedomain" pattern="((^[0-9]*$)|(^[A-Za-z]+$))"  onblur="checkempty(this.id)" name="freedomain" placeholder="Free Domain" required>
 
                   </div>
+                  <small class="text-danger" id="freedomain1"></small>
                   <p class="text-white my-auto">Enter 0 if no domain available in this service</p>
                 </div>
 
@@ -203,9 +211,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-caps-small text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="language" placeholder="Language / Technology Support " required>
+                    <input class="form-control text-dark" type="text" pattern="^([a-zA-Z,]+[a-zA-Z0-9]+[a-zA-Z0-9])+$\" id="language" onblur="checkempty(this.id)" name="language" placeholder="Language / Technology Support " required>
 
                   </div>
+                  <small class="text-danger"  id="language1"></small>
                   <p class="text-white my-auto">Separate by (,) Ex: PHP, MySQL, MongoDB</p>
                 </div>
                 <div class="form-group">
@@ -214,14 +223,13 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-email-83 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" name="mailbox" placeholder="Mailbox" required>
+                    <input class="form-control text-dark" type="text" pattern="((^[0-9]*$)|(^[A-Za-z]+$))" id="mailbox" onblur="checkempty(this.id)" name="mailbox" placeholder="Mailbox" required>
 
                   </div>
+                  <small class="text-danger" id="mailbox1"></small>
                   <p class="text-white my-auto">Enter Number of mailbox will be provided, enter 0 if none</p>
                 </div>
-
-
-                <input type="submit" name="submit" class="btn btn-success" value="Create Now">
+                <input type="submit" name="submit" id="submit" class="btn btn-success" value="Create Now" >
               </div>
             </form>
 
@@ -249,6 +257,36 @@ if (isset($_POST['submit'])) {
   <script src="assets/vendor/chart.js/dist/Chart.extension.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script>
+    function checkempty(id) {
+      var idValue = document.getElementById(id).value;
+      if (idValue.length == 0) {
+        var msgId = id+"1";
+        document.getElementById(id).style.border = "4px solid red";
+        document.getElementById(msgId).innerHTML = "This Field is Required";
+      } else {
+        var msgId = id+"1";
+        document.getElementById(id).style.border = "4px solid green";
+        document.getElementById(msgId).innerHTML ="";
+      }
+    }
+
+    $(document).ready(function(){
+      $("#mailbox").keyup(function(){
+        var v=$(this).val();
+        var reg=new RegExp('((^[0-9]*$)|(^[A-Za-z]+$))');
+        if(reg.test(v)){
+          $("#mailbox1").html("");
+         
+        } else {
+          $("#mailbox1").html("Vikcy Please ahhhhh");
+        }
+
+      })
+    })
+  </script>
 
 </body>
 

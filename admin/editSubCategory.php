@@ -19,13 +19,14 @@ if (isset($_GET['edit'])) {
 if (isset($_POST['update'])) {
     $id = $_POST['id'];
     $cat_id = $_POST['cat_id'];
-    $subcategory =trim(preg_replace('/\s+/',' ',  $_POST['subcategory']));
+    $subcategory = trim(preg_replace('/\s+/', ' ',  $_POST['subcategory']));
     $link = $_POST['link'];
     $avilability = $_POST['availablity'];
     $check = $product->updateSubCategory($id, $cat_id, $subcategory, $link, $avilability);
-    if ($check==2) {
+    if ($check == 2) {
         echo "<script>window.location.href='createcategory.php?status=2'</script>";
-    }if($check==1){
+    }
+    if ($check == 1) {
         echo "<script>window.location.href='createcategory.php?status=1'</script>";
     } else {
         echo "<script>window.location.href='createcategory.php?status=0'</script>";

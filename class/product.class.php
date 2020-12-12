@@ -145,4 +145,31 @@ VALUES('$productId','$encoded_features','$monthlyPrice','$annualprice','$sku')")
             }
         }
     }
+
+
+    public function fetchProduct(){
+        $query=mysqli_query($this->conn,"SELECT tbl_product_description.prod_id,description,mon_price,annual_price,sku,
+                            tbl_product.id,prod_parent_id,prod_name,link,prod_available,prod_launch_date 
+                            FROM tbl_product_description
+                            INNER JOIN tbl_product ON tbl_product_description.prod_id =tbl_product.id");
+
+        if($query){
+            return $query;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteProduct($id){
+        $query=mysqli_query($this->conn,"DELETE tbl_product, tbl_product_description
+                                        FROM tbl_product
+                                        INNER JOIN tbl_product_description
+                                        ON tbl_product.id=tbl_product_description.prod_id
+                                        WHERE tbl_product.id='$id'");
+        if($query){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
