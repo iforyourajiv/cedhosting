@@ -32,6 +32,32 @@ if(isset($_GET['status'])){
   </div>";
   }
 }
+
+if (isset($_GET['statusforedit'])) {
+  $status = $_GET['statusforedit'];
+  if ($status == 1) {
+    $html = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+  <strong>Product Updated SuccessFully</strong>
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span>&times;</span>
+  </button>
+</div>";
+  } else if ($status == 2) {
+    $html = "<div class='alert alert-Warning alert-dismissible fade show' role='alert'>
+    <strong>Product Not Updated!</strong> Product is Already Exist . Please Try Again.
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+      <span>&times;</span>
+    </button>
+  </div>";
+  } else {
+    $html = "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
+  <strong>Error Occured ,Product Not Updated</strong>  Please Try Again.
+  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+    <span>&times;</span>
+  </button>
+</div>";
+  }
+}
 ?>
 
 
@@ -93,8 +119,9 @@ if(isset($_GET['status'])){
                   foreach ($data as $element) {
                     $productId = $element['id'];
                     $category = $element['prod_parent_id'];
+                    $categoryName=$product->fetchSubcategoryName($category);
                     $productName = $element['prod_name'];
-                    $link = $element['link'];
+                    $link = $element['html'];
                     $monthlyPrice = $element['mon_price'];
                     $annualPrice = $element['annual_price'];
                     $sku = $element['sku'];
@@ -113,7 +140,7 @@ if(isset($_GET['status'])){
                     }
                 ?>
                     <tr>
-                      <td class="text-center"><?php echo $category ?></td>
+                      <td class="text-center"><?php echo  $categoryName ?></td>
                       <td class="text-center"><?php echo $productName ?></td>
                       <td class="text-center"><?php echo $link ?></td>
                       <td class="text-center">&#x20B9;<?php echo $monthlyPrice ?></td>

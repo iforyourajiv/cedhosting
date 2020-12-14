@@ -10,7 +10,7 @@ if (isset($_GET['edit'])) {
         $category = $product->fetchCategoryNameForSubCategory($categoryID);
         $subId = $element['id'];
         $name = $element['prod_name'];
-        $link = $element['link'];
+        $link = $element['html'];
         $avilability = $element['prod_available'];
     }
 }
@@ -78,8 +78,8 @@ if (isset($_POST['update'])) {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
                                     </div>
-                                    <input class="form-control text-dark" type="hidden" value="<?php echo $subId ?>" name="id">
-                                    <input class="form-control text-dark" type="text" value="<?php echo $name ?>" name="subcategory" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Enter Category Name" required>
+                                    <input class="form-control text-dark" type="hidden"  value="<?php echo $subId ?>" name="id">
+                                    <input class="form-control text-dark" type="text" pattern="^([A-z]+\-\d+(\.\d+)*)$|^([A-z])+$" value="<?php echo $name ?>" name="subcategory" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Enter Category Name" required>
                                 </div>
                             </div>
                             <div class="form-group">

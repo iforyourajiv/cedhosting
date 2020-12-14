@@ -12,14 +12,14 @@ if (isset($_POST['submit'])) {
   // these variable Will encode in json
   // *********************************
   $webspace   = $_POST['webspace'];
-  $bandwith   = $_POST['bandwith'];
+  $bandwidth   = $_POST['bandwith'];
   $freedomain = $_POST['freedomain'];
   $language   = $_POST['language'];
   $mailbox    = $_POST['mailbox'];
   // *********************************
 
   $features = array(
-    "webspace"   => $webspace, "bandwidth"  => $bandwith,
+    "webspace"   => $webspace, "bandwidth"  => $bandwidth,
     "freedomain" => $freedomain, "language" => $language, "mailbox" => $mailbox,
   );
   $encoded_features = json_encode($features);
@@ -92,7 +92,6 @@ if (isset($_POST['submit'])) {
                   $data = $product->fetchSubcategoryForProduct();
                   foreach ($data as $element) {
                     $pro_id = $element['id'];
-                    // $pro_parent_id=$element['prod_parent_id'];
                     $pro_name = $element['prod_name'];
                   ?>
 
@@ -107,7 +106,7 @@ if (isset($_POST['submit'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-app text-primary"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" id="productName"  onblur="checkempty(this.id)" name="productName" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Product Name" required>
+                  <input class="form-control text-dark" type="text" id="productName" pattern='^[a-zA-Z0-9]*[-\s]?[a-zA-Z]+[-\s]?[0-9]*([-\s]?([a-zA-Z0-9]*[-\s]?[a-zA-Z]+[-\s]?[0-9]*)+)*$' onblur="checkempty(this.id)" name="productName" placeholder="Product Name" required>
 
                 </div>
                 <small class="text-danger" id="productName1"></small>
@@ -173,7 +172,7 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-bag-17 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" pattern='([0-9]+(\.[0-9]+)?)' id="webspace" onblur="checkempty(this.id)" name="webspace" placeholder="Web Space(in GB)" required>
+                    <input class="form-control text-dark" type="text" pattern='([0-9]+(\.[0-9]+)?)' id="webspace" maxlength="5" onblur="checkempty(this.id)" name="webspace" placeholder="Web Space(in GB)" required>
 
                   </div>
                   <small class="text-danger" id="webspace1"></small>
@@ -186,10 +185,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-spaceship text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" pattern='([0-9]+(\.[0-9]+)?)' id="bandwith" onblur="checkempty(this.id)" name="bandwith" placeholder="Bandwidth (in GB)" required>
+                    <input class="form-control text-dark" type="text" pattern='((\d+)((\.\d{1,2})?))$' maxlength="15" id="bandwidth" onblur="checkempty(this.id)" name="bandwith" placeholder="Bandwidth (in GB)" required>
 
                   </div>
-                  <small class="text-danger" id="bandwith1"></small>
+                  <small class="text-danger" id="bandwidth1"></small>
                   <p class="text-white my-auto">Enter 0.5 for 512 MB</p>
                 </div>
                 <div class="form-group">
@@ -198,7 +197,7 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-world-2 text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" id="freedomain" pattern="((^[0-9]*$)|(^[A-Za-z]+$))"  onblur="checkempty(this.id)" name="freedomain" placeholder="Free Domain" required>
+                    <input class="form-control text-dark" type="text" id="freedomain" pattern="((^[0-9]*$)|(^[A-Za-z]+$))" onblur="checkempty(this.id)" name="freedomain" placeholder="Free Domain" required>
 
                   </div>
                   <small class="text-danger" id="freedomain1"></small>
@@ -211,10 +210,10 @@ if (isset($_POST['submit'])) {
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="ni ni-caps-small text-primary"></i></span>
                     </div>
-                    <input class="form-control text-dark" type="text" pattern="^([a-zA-Z,]+[a-zA-Z0-9]+[a-zA-Z0-9])+$\" id="language" onblur="checkempty(this.id)" name="language" placeholder="Language / Technology Support " required>
+                    <input class="form-control text-dark" type="text" pattern="^[a-zA-Z0-9]*[a-zA-Z]+[0-9]*(,?([a-zA-Z0-9]*[a-zA-Z]+[0-9]*)+)*$" id="language" onblur="checkempty(this.id)" name="language" placeholder="Language / Technology Support " required>
 
                   </div>
-                  <small class="text-danger"  id="language1"></small>
+                  <small class="text-danger" id="language1"></small>
                   <p class="text-white my-auto">Separate by (,) Ex: PHP, MySQL, MongoDB</p>
                 </div>
                 <div class="form-group">
@@ -229,7 +228,7 @@ if (isset($_POST['submit'])) {
                   <small class="text-danger" id="mailbox1"></small>
                   <p class="text-white my-auto">Enter Number of mailbox will be provided, enter 0 if none</p>
                 </div>
-                <input type="submit" name="submit" id="submit" class="btn btn-success" value="Create Now" >
+                <input type="submit" name="submit" id="submit" class="btn btn-success" onClick="javascript: return confirm('Please confirm You Want To Add A Product');" value="Create Now" disabled>
               </div>
             </form>
 
@@ -258,35 +257,9 @@ if (isset($_POST['submit'])) {
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-  <script>
-    function checkempty(id) {
-      var idValue = document.getElementById(id).value;
-      if (idValue.length == 0) {
-        var msgId = id+"1";
-        document.getElementById(id).style.border = "4px solid red";
-        document.getElementById(msgId).innerHTML = "This Field is Required";
-      } else {
-        var msgId = id+"1";
-        document.getElementById(id).style.border = "4px solid green";
-        document.getElementById(msgId).innerHTML ="";
-      }
-    }
-
-    $(document).ready(function(){
-      $("#mailbox").keyup(function(){
-        var v=$(this).val();
-        var reg=new RegExp('((^[0-9]*$)|(^[A-Za-z]+$))');
-        if(reg.test(v)){
-          $("#mailbox1").html("");
-         
-        } else {
-          $("#mailbox1").html("Vikcy Please ahhhhh");
-        }
-
-      })
-    })
-  </script>
+  <script src="../js/validation.js"></script>
+ 
+ 
 
 </body>
 

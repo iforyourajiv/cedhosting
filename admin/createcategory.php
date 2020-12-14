@@ -133,7 +133,7 @@ if (isset($_GET['status'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="subcategory" pattern='^([A-Za-z]+ )+[A-Za-z]+$|^[A-Za-z]+$' placeholder="Enter Category Name" required>
+                  <input class="form-control text-dark" type="text" name="subcategory" pattern='^([A-z]+\-\d+(\.\d+)*)$|^([A-z])+$' placeholder="Enter Category Name" required>
                 </div>
               </div>
               <div class="form-group">
