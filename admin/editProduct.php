@@ -138,7 +138,7 @@ if (isset($_POST['update'])) {
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-active-40 text-primary"></i></span>
                                     </div>
-                                    <input class="form-control text-dark" type="url" id="url" value="<?php echo $link ?>" name="url" placeholder="Enter Link">
+                                    <input class="form-control text-dark" type="text" id="url" value="<?php echo $link ?>" name="url" placeholder="Enter Link">
                                 </div>
                             </div>
                             <hr class="bg-white">

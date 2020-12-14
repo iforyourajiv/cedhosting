@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 
 <head>
-	<title>Planet Hosting a Hosting Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+	<title>CedHosting</title>
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,10 +91,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									foreach ($data as $element) {
 										$SubmenuId = $element['id'];
 										$SubmenuName = $element['prod_name'];
-										$link = $element['link'];
 
 								?>
-										<li><a href="<?php echo $link ?>"><?php echo $SubmenuName ?></a></li>
+										<li><a href="catpage.php?id=<?php echo $SubmenuId ?>"><?php echo $SubmenuName ?></a></li>
 								<?php }
 								} ?>
 							</ul>

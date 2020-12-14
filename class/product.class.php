@@ -208,4 +208,18 @@ public function updateProduct($id, $subcat_id, $productName,$link, $monthlyPrice
     }
 }
 
+
+public function fetchProductForPage($SubCategoryId){
+    $query = mysqli_query($this->conn, "SELECT tbl_product_description.prod_id,description,mon_price,annual_price,sku,
+    tbl_product.id,prod_parent_id,prod_name,html,prod_available,prod_launch_date 
+    FROM tbl_product_description
+    INNER JOIN tbl_product ON tbl_product_description.prod_id =tbl_product.id WHERE tbl_product.prod_parent_id='$SubCategoryId' AND prod_available='1'");
+
+    if ($query) {
+    return $query;
+    } else {
+    return false;
+    }
+    }
+
 }

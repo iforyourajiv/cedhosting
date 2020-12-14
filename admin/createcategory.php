@@ -133,8 +133,9 @@ if (isset($_GET['status'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" name="subcategory" pattern='^([A-z]+\-\d+(\.\d+)*)$|^([A-z])+$' placeholder="Enter Category Name" required>
+                  <input class="form-control text-dark" type="text" id="subcategory" name="subcategory" pattern='^[a-zA-Z\s]*[a-zA-Z]+[.a-zA-Z0-9\-]*$' placeholder="Enter Category Name" required>
                 </div>
+                <small class="text-danger" id="subcategory1"></small>
               </div>
               <div class="form-group">
                 <label class="text-light font-weight-bold">Link</label>
@@ -234,6 +235,17 @@ if (isset($_GET['status'])) {
         "sPaginationType": "full_numbers"
       });
     })
+
+    $("#subcategory").on('keyup blur',function() {
+    let v = $(this).val();
+    let reg = new RegExp('^[a-zA-Z\s]*[a-zA-Z]+[.a-zA-Z0-9\-]*$');
+    if (reg.test(v)) {
+      $("#subcategory1").html("");
+    } else {
+      $("#subcategory1").html("Invalid Input, should be Alpha numeric/ alphabetic,Not only numeric,Only - special char allowed ,No White Spaces");
+    }
+
+  })
   </script>
 
 </body>
