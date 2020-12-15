@@ -2,21 +2,20 @@
 include_once '../class/product.class.php';
 $product = new Product();
 $data = $product->fetchProduct();
-$html="";
-if(isset($_GET['del'])){
-  $id=$_GET['del'];
-  $check=$product->deleteProduct($id);
-  if($check){
+$html = "";
+if (isset($_GET['del'])) {
+  $id = $_GET['del'];
+  $check = $product->deleteProduct($id);
+  if ($check) {
     echo "<script>window.location.href='viewProduct.php?status=1'</script>";
-   
   } else {
     echo "<script>window.location.href='viewProduct.php?status=0'</script>";
   }
 }
 
-if(isset($_GET['status'])){
-  $status=$_GET['status'];
-  if($status==1){
+if (isset($_GET['status'])) {
+  $status = $_GET['status'];
+  if ($status == 1) {
     $html = "<div class='alert alert-success alert-dismissible fade show' role='alert'>
     <strong>Product Deleted Successfully!</strong>
     <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -119,7 +118,7 @@ if (isset($_GET['statusforedit'])) {
                   foreach ($data as $element) {
                     $productId = $element['id'];
                     $category = $element['prod_parent_id'];
-                    $categoryName=$product->fetchSubcategoryName($category);
+                    $categoryName = $product->fetchSubcategoryName($category);
                     $productName = $element['prod_name'];
                     $link = $element['html'];
                     $monthlyPrice = $element['mon_price'];
@@ -154,7 +153,8 @@ if (isset($_GET['statusforedit'])) {
                       <td class="text-center"><?php echo $launchDate ?></td>
                       <td class="text-center"><?php echo  $availablity ?></td>
                       <td class="text-center"><a href="editProduct.php?edit=<?php echo $productId ?>" class="btn btn-Warning">Edit</a>
-                      <a onClick="javascript: return confirm('Please confirm deletion');" href="viewProduct.php?del=<?php echo $productId ?>" class="btn btn-Danger">Delete</a></td></td>
+                        <a onClick="javascript: return confirm('Please confirm deletion');" href="viewProduct.php?del=<?php echo $productId ?>" class="btn btn-Danger">Delete</a></td>
+                      </td>
                     </tr>
 
                 <?php  }

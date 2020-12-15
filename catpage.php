@@ -2,15 +2,16 @@
 include_once './class/product.class.php';
 $product = new Product();
 $productList = "";
-$categoryName="Coming Soon ";
+$categoryLink = "";
+$categoryName = "Coming Soon ";
 if (isset($_GET['id'])) {
-	$SubCategoryId = $_GET['id'];
+	$SubCategoryId =  base64_decode($_GET['id']);
 	$data = $product->fetchProductForPage($SubCategoryId);
+	$categoryLink = $product->fetchSubcategoryHtml($SubCategoryId);
 	if ($data) {
 		foreach ($data as $element) {
 			$productId = $element['id'];
 			$category = $element['prod_parent_id'];
-			$categoryName = $product->fetchSubcategoryName($category);
 			$productName = $element['prod_name'];
 			$link = $element['html'];
 			$monthlyPrice = $element['mon_price'];
@@ -23,23 +24,23 @@ if (isset($_GET['id'])) {
 			$language = $description->language;
 			$mailbox = $description->mailbox;
 			$availablity = $element['prod_available'];
-			$productList.= '<div class="col-md-3 linux-price">
+			$productList .= '<div class="col-md-3 linux-price">
 			<div class="linux-top">
-				<h4>'.$productName.' </h4>
+				<h4>' . $productName . ' </h4>
 			</div>
 			<div class="linux-bottom">
-				<h5>&#x20B9;'. $monthlyPrice.'/-<span class="month">per month</span></h5>
-				<h5>&#x20B9;'. $annualPrice .'/-<span class="month">per Annum</span></h5>
-				<h6> '.$freeDomain.'  Domain</h6>
+				<h5>&#x20B9;' . $monthlyPrice . '/-<span class="month">per month</span></h5>
+				<h5>&#x20B9;' . $annualPrice . '/-<span class="month">per Annum</span></h5>
+				<h6> ' . $freeDomain . '  Domain</h6>
 				<ul>
-					<li><strong>'.$webspace.'</strong> GB Disk Space</li>
-					<li><strong>'.$bandwidth.'</strong> GB Data Transfer</li>
-					<li><strong>'.$mailbox .'</strong> Email Accounts</li>
-					<li>Language Support <strong>'.$language.'</strong></li>
+					<li><strong>' . $webspace . '</strong> GB Disk Space</li>
+					<li><strong>' . $bandwidth . '</strong> GB Data Transfer</li>
+					<li><strong>' . $mailbox . '</strong> Email Accounts</li>
+					<li>Language Support <strong>' . $language . '</strong></li>
 					<li><strong>location</strong> : <img src="images/india.png"></li>
 				</ul>
 			</div>
-			<a href="#">buy now</a>
+			<a href="cart.php?id=' . base64_encode($productId) . '">buy now</a>
 		</div>';
 		}
 	}
@@ -65,27 +66,7 @@ if (isset($_GET['id'])) {
 	<?php include './header.php' ?>
 	<!---singleblog--->
 	<div class="content">
-		<div class="linux-section">
-			<div class="container">
-				<div class="linux-grids">
-					<div class="col-md-8 linux-grid">
-						<h2><?php echo $categoryName ?></h2>
-						<ul>
-							<li><span>Unlimited </span> Domains, Disk Space, Bandwidth and Email Addresses</li>
-							<li><span>99.9% uptime </span> with dedicated 24/7 technical support</li>
-							<li><span>Powered by </span> CloudLinux, cPanel (demo), Apache, MySQL, PHP, Ruby & more</li>
-							<li><span>Launch </span> your business with Rs. 2000* Google AdWords Credit *</li>
-							<li><span>30 day </span> Money Back Guarantee</li>
-						</ul>
-						<a href="#">view plans</a>
-					</div>
-					<div class="col-md-4 linux-grid1">
-						<img src="images/linux.png" class="img-responsive" alt="" />
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
+		<?php echo $categoryLink['html']  ?>
 		<div class="tab-prices">
 			<div class="container">
 				<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -95,7 +76,7 @@ if (isset($_GET['id'])) {
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-							<div class="linux-prices">
+							<div id="plan" class="linux-prices">
 								<?php echo $productList ?>
 								<div class="clearfix"></div>
 							</div>
@@ -203,7 +184,7 @@ if (isset($_GET['id'])) {
 		<!-- clients -->
 		<div class="whatdo">
 			<div class="container">
-				<h3>Linux Features</h3>
+				<h3><?php echo $categoryLink['prod_name']  ?> Features</h3>
 				<div class="what-grids">
 					<div class="col-md-4 what-grid">
 						<div class="what-left">

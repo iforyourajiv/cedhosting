@@ -182,7 +182,8 @@ table {
 }
 td,
 th {
-  padding: 0;
+ 
+  padding: 0px;
 }
 @media print {
   * {

@@ -33,7 +33,7 @@ if (isset($_POST['update'])) {
     $productName  = trim(preg_replace('/\s+/', ' ',   $_POST['productName']));
     $monthlyPrice = $_POST['monthlyPrice'];
     $annualprice  = $_POST['annualprice'];
-    $link=$_POST['url'];
+    $link = $_POST['url'];
     $sku          = $_POST['sku'];
     $availablity  = $_POST['availablity'];
 
@@ -52,7 +52,7 @@ if (isset($_POST['update'])) {
     );
     $encoded_features = json_encode($features);
 
-    $check = $product->updateProduct($id, $subcat_id, $productName,$link, $monthlyPrice, $annualprice, $sku, $encoded_features, $availablity);
+    $check = $product->updateProduct($id, $subcat_id, $productName, $link, $monthlyPrice, $annualprice, $sku, $encoded_features, $availablity);
 
     // if ($check == 2) {
     //     echo "<script>window.location.href='viewProduct.php?statusforedit='2'</script>";

@@ -100,10 +100,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										foreach ($data as $element) {
 											$SubmenuId = $element['id'];
 											$SubmenuName = $element['prod_name'];
-											$link = $element['link'];
 
 									?>
-											<li><a href="<?php echo $link ?>"><?php echo $SubmenuName ?></a></li>
+											<li><a href="catpage.php?id=<?php echo base64_encode($SubmenuId); ?>"><?php echo $SubmenuName ?></a></li>
 									<?php }
 									} ?>
 								</ul>
@@ -111,7 +110,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li <?php if ($filename == 'pricing.php') : ?> class="active" <?php endif; ?>><a href="pricing.php">Pricing</a></li>
 							<li <?php if ($filename == 'blog.php') : ?> class="active" <?php endif; ?>><a href="blog.php">Blog</a></li>
 							<li <?php if ($filename == 'contact.php') : ?> class="active" <?php endif; ?>><a href="contact.php">Contact</a></li>
-							<li><a href="cart.php"><i class="fa fa-shopping-cart"></i></a></li>
+							<li><a href="cart.php">
+									<span class="glyphicon glyphicon-shopping-cart"></span>
+									<span class="badge badge-notify"><?php
+																		$countitem = "";
+																		if (!isset($_SESSION['cart'])) {
+																			$countitem = 0;
+																			echo $countitem;
+																		} else {
+																			$countitem = count($_SESSION['cart']);
+																			echo $countitem;
+																		}
+
+																		?></span></a>
+
+							</li>
 							<?php
 							if (!isset($_SESSION['username'])) {
 								$html = "<li><a href='login.php'>Login</a></li>";

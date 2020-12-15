@@ -184,6 +184,14 @@ background: #e7663f;
     color: #777;
     margin-top: .5em;
 }/**team**/
+
+.badge-notify{
+    background:#28A745;
+    color: white;
+    position:relative;
+    top: -15px;
+    left:-10px;
+   }
 .team{
 	padding: 0 0 4em;
 }
@@ -849,7 +857,6 @@ section#tables  p {
 }
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   font-size: 0.9em;
-  color: #777;
   border-top: none !important;
 }
 .tab-content > .active {

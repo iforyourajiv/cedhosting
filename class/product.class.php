@@ -146,13 +146,20 @@ VALUES('$productId','$encoded_features','$monthlyPrice','$annualprice','$sku')")
         }
     }
 
-        public function fetchSubcategoryName($category){
-            $query = mysqli_query($this->conn, "SELECT prod_name FROM tbl_product WHERE id='$category'");
-            $data = mysqli_fetch_assoc($query);
-            $categoryName = $data['prod_name'];
-            return $categoryName;
-        }
+    public function fetchSubcategoryName($category)
+    {
+        $query = mysqli_query($this->conn, "SELECT prod_name FROM tbl_product WHERE id='$category'");
+        $data = mysqli_fetch_assoc($query);
+        $categoryName = $data['prod_name'];
+        return $categoryName;
+    }
 
+    public function fetchSubcategoryHtml($category)
+    {
+        $query = mysqli_query($this->conn, "SELECT html,prod_name FROM tbl_product WHERE id='$category'");
+        $data = mysqli_fetch_assoc($query);
+        return $data;
+    }
 
     public function fetchProduct()
     {
@@ -182,44 +189,46 @@ VALUES('$productId','$encoded_features','$monthlyPrice','$annualprice','$sku')")
         }
     }
 
-    public function fetchProductForEdit($id){
+    public function fetchProductForEdit($id)
+    {
         $query = mysqli_query($this->conn, "SELECT tbl_product_description.prod_id,description,mon_price,annual_price,sku,
         tbl_product.id,prod_parent_id,prod_name,html,prod_available,prod_launch_date 
         FROM tbl_product_description
         INNER JOIN tbl_product ON tbl_product_description.prod_id =tbl_product.id WHERE tbl_product.id='$id'");
 
         if ($query) {
-        return $query;
+            return $query;
         } else {
-        return false;
+            return false;
         }
-        }
+    }
 
-public function updateProduct($id, $subcat_id, $productName,$link, $monthlyPrice, $annualprice, $sku, $encoded_features, $availablity){
-    $query=mysqli_query($this->conn,"UPDATE tbl_product_description INNER JOIN tbl_product ON tbl_product_description.prod_id = tbl_product.id 
+    public function updateProduct($id, $subcat_id, $productName, $link, $monthlyPrice, $annualprice, $sku, $encoded_features, $availablity)
+    {
+        $query = mysqli_query($this->conn, "UPDATE tbl_product_description INNER JOIN tbl_product ON tbl_product_description.prod_id = tbl_product.id 
     SET
     tbl_product.prod_name = '$productName', tbl_product.prod_parent_id ='$subcat_id', tbl_product.html = '$link', tbl_product.prod_available = '$availablity',
     tbl_product_description.description = '$encoded_features', tbl_product_description.mon_price ='$monthlyPrice', tbl_product_description.annual_price = '$annualprice', tbl_product_description.sku = '$sku'
     WHERE tbl_product.id='$id'");
-      if ($query) {
-        return 1; // For SuccessFull Insertion
-    } else {
-        return 0; // Some Error Occured
+        if ($query) {
+            return 1; // For SuccessFull Insertion
+        } else {
+            return 0; // Some Error Occured
+        }
     }
-}
 
 
-public function fetchProductForPage($SubCategoryId){
-    $query = mysqli_query($this->conn, "SELECT tbl_product_description.prod_id,description,mon_price,annual_price,sku,
+    public function fetchProductForPage($SubCategoryId)
+    {
+        $query = mysqli_query($this->conn, "SELECT tbl_product_description.prod_id,description,mon_price,annual_price,sku,
     tbl_product.id,prod_parent_id,prod_name,html,prod_available,prod_launch_date 
     FROM tbl_product_description
     INNER JOIN tbl_product ON tbl_product_description.prod_id =tbl_product.id WHERE tbl_product.prod_parent_id='$SubCategoryId' AND prod_available='1'");
 
-    if ($query) {
-    return $query;
-    } else {
-    return false;
+        if ($query) {
+            return $query;
+        } else {
+            return false;
+        }
     }
-    }
-
 }

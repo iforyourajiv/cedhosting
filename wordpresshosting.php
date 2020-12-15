@@ -27,7 +27,7 @@
 							<li><span>Launch </span> your business with Rs. 1000* Google AdWords Credit *</li>
 							<li><span>30 day </span> Money Back Guarantee</li>
 						</ul>
-						<a href="#">view plans</a>
+						<a href="#plan">view plans</a>
 					</div>
 					<div class="col-md-4 linux-grid1">
 						<img src="images/word.png" class="img-responsive" alt="" />
@@ -45,7 +45,7 @@
 					</ul>
 					<div id="myTabContent" class="tab-content">
 						<div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
-							<div class="linux-prices">
+							<div id="plan" class="linux-prices">
 								<div class="col-md-3 linux-price">
 									<div class="linux-top">
 										<h4>Standard</h4>

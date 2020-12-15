@@ -133,7 +133,7 @@ if (isset($_GET['status'])) {
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
                   </div>
-                  <input class="form-control text-dark" type="text" id="subcategory" name="subcategory" pattern='^[a-zA-Z\s]*[a-zA-Z]+[.a-zA-Z0-9\-]*$' placeholder="Enter Category Name" required>
+                  <input class="form-control text-dark" type="text" id="subcategory" name="subcategory" placeholder="Enter Category Name" required>
                 </div>
                 <small class="text-danger" id="subcategory1"></small>
               </div>
@@ -147,7 +147,7 @@ if (isset($_GET['status'])) {
                 </div>
               </div>
               <div>
-                <input type="submit" name="submit" class="btn btn-primary" value="Add Sub Category">
+                <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Add Sub Category" disabled>
               </div>
             </form>
 
@@ -236,16 +236,22 @@ if (isset($_GET['status'])) {
       });
     })
 
-    $("#subcategory").on('keyup blur',function() {
-    let v = $(this).val();
-    let reg = new RegExp('^[a-zA-Z\s]*[a-zA-Z]+[.a-zA-Z0-9\-]*$');
-    if (reg.test(v)) {
-      $("#subcategory1").html("");
-    } else {
-      $("#subcategory1").html("Invalid Input, should be Alpha numeric/ alphabetic,Not only numeric,Only - special char allowed ,No White Spaces");
-    }
+    $("#subcategory").blur(function() {
+      var v = $(this).val();
+      v = v.replace(/\.{2,}/g, '.');
+      v = v.replace(/\ {2,}/g, ' ');
+      v = v.trim();
+      $(this).val(v);
+      var reg = new RegExp('^[a-zA-z][0-9a-zA-Z\.\ ]+[a-zA-z0-9]+$|^[a-zA-z][0-9a-zA-Z\ ]+$');
+      if (reg.test(v)) {
+        $("#subcategory").css("border", "2px solid green");
+        $("#submit").prop("disabled", false);
+      } else {
+        $("#subcategory").css("border", "2px solid red");
+        $("#submit").prop("disabled", true);
+      }
 
-  })
+    })
   </script>
 
 </body>
