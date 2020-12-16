@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<span>Password<label>*</label></span>
 									<input type="password" name="password">
 								</div>
-								<a class="forgot" href="#">Forgot Your Password?</a>
+								<a class="forgot" href="forgotPassword.php">Forgot Your Password?</a>
 								<input type="submit" name="login" value="Login">
 							</form>
 						</div>

@@ -137,15 +137,7 @@ if (isset($_GET['status'])) {
                 </div>
                 <small class="text-danger" id="subcategory1"></small>
               </div>
-              <div class="form-group">
-                <label class="text-light font-weight-bold">Link</label>
-                <div class="input-group  input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-cloud-upload-96"></i></span>
-                  </div>
-                  <input class="form-control text-dark" type="text" name="link" placeholder="Enter Link">
-                </div>
-              </div>
+              <textarea>Hello, World!</textarea>
               <div>
                 <input type="submit" name="submit" id="submit" class="btn btn-primary" value="Add Sub Category" disabled>
               </div>
@@ -228,6 +220,17 @@ if (isset($_GET['status'])) {
   <script src="assets/js/argon.js?v=1.2.0"></script>
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/uv2mp4fc1cxy2fpkbe1kw6enkuazwdr6oebim57wn9hlrwsz/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
+      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
+      toolbar_mode: 'floating',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+    });
+  </script>
 
   <script>
     $(function() {
